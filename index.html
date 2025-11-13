@@ -161,14 +161,6 @@
       background: rgba(17, 24, 39, 0.95);
       box-shadow: 0 0 28px #3b82f6cc;
     }
-    .server-info .players {
-      font-size: 2.4rem;
-      color: #60a5fa;
-      font-weight: 700;
-      margin-bottom: 8px;
-      animation: pulse 2.2s infinite;
-      letter-spacing: 0.05em;
-    }
 
     /* Cards */
     .game-modes {
@@ -380,8 +372,6 @@
         <p>O maior servidor da galáxia</p>
 
         <div class="server-info">
-          <div class="players" id="playersOnline">--</div>
-          <div>Jogadores Online</div>
           <div>Versões Suportadas: 1.8 até 1.21</div>
         </div>
       </section>
@@ -486,74 +476,55 @@
 
       <section id="discord">
         <h2>Discord Oficial</h2>
-        <p>Entre no nosso Discord para conversar, tirar dúvidas e ficar por dentro de tudo:</p>
-        <a href="https://dsc.gg/universocraft-portugues" target="_blank" rel="noopener noreferrer" class="btn">Entrar no Discord</a>
+        <p>Entre no nosso Discord para conversar, tirar dúvidas e participar de eventos:</p>
+        <a href="https://discord.gg/universocraft" target="_blank" rel="noopener noreferrer" class="btn">Entrar no Discord</a>
       </section>
 
       <section id="youtube">
-        <h2>YouTube Oficial</h2>
-        <p>Acompanhe nossos vídeos, eventos e tutoriais no canal oficial:</p>
-        <a href="https://www.youtube.com/@SpaceCommunity-i2z" target="_blank" rel="noopener noreferrer" class="btn">Ir para o YouTube</a>
+        <h2>Canal Oficial no YouTube</h2>
+        <p>Confira nossos vídeos, tutoriais e eventos no YouTube:</p>
+        <a href="https://youtube.com/universocraft" target="_blank" rel="noopener noreferrer" class="btn">Visitar YouTube</a>
       </section>
     </main>
   </div>
 
   <footer>
-    UniversoCraft &copy; 2025 - O maior servidor da galáxia
+    UniversoCraft &copy; 2025 — Todos os direitos reservados
   </footer>
 
   <script>
-    // Navegação simples entre seções
-    const navLinks = document.querySelectorAll('nav a');
+    // Navegação entre seções
+    const links = document.querySelectorAll('nav a');
     const sections = document.querySelectorAll('main section');
 
-    navLinks.forEach(link => {
+    links.forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
-        const targetId = link.getAttribute('data-target');
+        const target = link.getAttribute('data-target');
 
-        // Atualiza links ativos
-        navLinks.forEach(l => l.classList.remove('active'));
+        // Remove active de todos links e sections
+        links.forEach(l => l.classList.remove('active'));
+        sections.forEach(s => s.classList.remove('active'));
+
+        // Ativa link e section correspondentes
         link.classList.add('active');
-
-        // Mostra a seção correta
-        sections.forEach(sec => {
-          if (sec.id === targetId) {
-            sec.classList.add('active');
-          } else {
-            sec.classList.remove('active');
-          }
-        });
+        document.getElementById(target).classList.add('active');
       });
     });
 
-    // Copiar IP do servidor
-    function copyToClipboard(text, msgElement) {
-      navigator.clipboard.writeText(text).then(() => {
-        msgElement.textContent = 'Copiado!';
-        msgElement.classList.add('show');
-        setTimeout(() => {
-          msgElement.classList.remove('show');
-          msgElement.textContent = '';
-        }, 2500);
+    // Copiar IP no botão na seção "Conecte-se"
+    const btnCopyIP = document.getElementById('copy-ip-page');
+    const msgCopyIP = document.getElementById('copy-msg-page');
+
+    btnCopyIP.addEventListener('click', () => {
+      navigator.clipboard.writeText('mc.universocraft.com').then(() => {
+        msgCopyIP.textContent = 'IP copiado para a área de transferência!';
+        setTimeout(() => { msgCopyIP.textContent = ''; }, 3500);
+      }).catch(() => {
+        msgCopyIP.textContent = 'Erro ao copiar o IP.';
+        setTimeout(() => { msgCopyIP.textContent = ''; }, 3500);
       });
-    }
-
-    const copyIpBtn = document.getElementById('copy-ip-page');
-    const copyMsgPage = document.getElementById('copy-msg-page');
-    copyIpBtn.addEventListener('click', () => {
-      copyToClipboard('mc.universocraft.com', copyMsgPage);
     });
-
-    // Fake players online (exemplo)
-    const playersOnline = document.getElementById('playersOnline');
-    function updatePlayers() {
-      const randomPlayers = Math.floor(Math.random() * 150) + 20;
-      playersOnline.textContent = randomPlayers;
-    }
-    updatePlayers();
-    setInterval(updatePlayers, 15000);
-
   </script>
 </body>
 </html>

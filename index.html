@@ -170,43 +170,6 @@
       box-shadow: 0 0 20px #1e40af;
     }
 
-    /* Formulário Contacto */
-    form {
-      display: flex;
-      flex-direction: column;
-      max-width: 500px;
-      margin-top: 20px;
-    }
-    label {
-      margin-bottom: 6px;
-      font-weight: 600;
-      color: #93c5fd;
-    }
-    input, textarea {
-      padding: 10px;
-      margin-bottom: 15px;
-      border-radius: 6px;
-      border: none;
-      font-size: 1rem;
-      font-family: inherit;
-      resize: vertical;
-      box-shadow: 0 0 5px #2563eb inset;
-      background: #1e293b;
-      color: #e0e7ff;
-    }
-    textarea {
-      min-height: 120px;
-    }
-    input:focus, textarea:focus {
-      outline: 2px solid #3b82f6;
-      box-shadow: 0 0 8px #3b82f6 inset;
-    }
-    .contact-info {
-      margin-top: 20px;
-      font-size: 1.1rem;
-      color: #93c5fd;
-    }
-
     /* Footer fixo */
     footer {
       background: #0f172a;
@@ -340,7 +303,6 @@
       <a href="#" data-target="bugs">Bugs</a>
       <a href="#" data-target="discord">Discord</a>
       <a href="#" data-target="youtube">YouTube</a>
-      <a href="#" data-target="contacto">Contacto</a>
     </nav>
 
     <main>
@@ -473,24 +435,6 @@
           style="width: 100%; max-width: 720px; height: 405px; border-radius: 14px; box-shadow: 0 0 20px #2563eb; margin: 20px 0;"
         ></iframe>
       </section>
-
-      <section id="contacto">
-        <h2>📬 Contacto</h2>
-        <p>Se precisares de suporte ou quiseres entrar em contato connosco, preenche o formulário abaixo ou envia um email para:</p>
-        <p class="contact-info"><strong>Email de Suporte:</strong> suporte@universocraft.com</p>
-        <form id="contactForm" action="mailto:suporte@universocraft.com" method="POST" enctype="text/plain" target="_blank" novalidate>
-          <label for="nome">Nome:</label>
-          <input type="text" id="nome" name="nome" required placeholder="O teu nome" />
-
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required placeholder="O teu email" />
-
-          <label for="mensagem">Mensagem:</label>
-          <textarea id="mensagem" name="mensagem" required placeholder="A tua mensagem"></textarea>
-
-          <button type="submit" class="btn">Enviar</button>
-        </form>
-      </section>
     </main>
   </div>
 
@@ -531,18 +475,16 @@
         }, 3000);
       }).catch(() => {
         copyMsg.textContent = 'Erro ao copiar. Tenta manualmente.';
-        setTimeout(() => {
-          copyMsg.textContent = '';
-        }, 3000);
       });
     });
 
-    // Atualização fictícia do número de jogadores online (simulação)
-    const playersEl = document.getElementById('playersOnline');
+    // Atualizar jogadores online (exemplo estático, pode ser dinâmico via API)
+    const playersOnline = document.getElementById('playersOnline');
+    // Simulação de atualização (pode ser substituído por chamada fetch)
     function atualizarJogadores() {
-      // Simulação de jogadores online entre 120 e 320
-      const jogadores = Math.floor(Math.random() * 200) + 120;
-      playersEl.textContent = jogadores;
+      // Exemplo simples: gerar número aleatório entre 250 e 350
+      const jogadores = Math.floor(Math.random() * 100) + 250;
+      playersOnline.textContent = jogadores;
     }
     atualizarJogadores();
     setInterval(atualizarJogadores, 15000); // Atualiza a cada 15 segundos

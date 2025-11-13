@@ -3,18 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>UniversoCraft Português - O Servidor Minecraft</title>
+  <title>UniversoCraft - Início</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    /* Reset e básico */
+    /* Reset */
     * {
       margin: 0; padding: 0; box-sizing: border-box;
     }
     body {
-      background: linear-gradient(135deg, #0f0f1a 0%, #05060d 100%);
       font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f0f1a, #05060d);
       color: #e0e0e0;
-      overflow-x: hidden;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -27,15 +26,16 @@
     a:hover {
       color: #6fc8ff;
     }
-    /* Navbar estilo Hypixel/Opera GX */
+
+    /* Navbar fixa topo */
     nav {
       background: #11141f;
       backdrop-filter: saturate(180%) blur(10px);
       box-shadow: 0 0 15px #1b9bff88;
       display: flex;
       justify-content: center;
-      gap: 30px;
-      padding: 18px 0;
+      gap: 32px;
+      padding: 16px 0;
       position: fixed;
       top: 0;
       width: 100%;
@@ -45,130 +45,81 @@
       user-select: none;
     }
     nav a {
-      position: relative;
-      padding: 6px 12px;
+      padding: 6px 14px;
       border-radius: 8px;
+      position: relative;
     }
-    nav a::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      width: 0%;
-      height: 3px;
-      background: #1b9bff;
-      border-radius: 5px;
-      transition: width 0.3s ease, left 0.3s ease;
-      transform: translateX(-50%);
-    }
-    nav a:hover::after,
-    nav a.active::after {
-      width: 100%;
-      left: 0;
-      transform: none;
+    nav a.active, nav a:hover {
+      color: #1b9bff;
+      text-shadow: 0 0 12px #3ea7ff;
     }
 
-    /* Header com estilo futurista */
+    /* Header */
     header {
       margin-top: 72px;
-      padding: 100px 20px 80px;
       text-align: center;
-      position: relative;
-      z-index: 10;
+      padding: 90px 20px 80px;
     }
     header h1 {
       font-family: 'Orbitron', sans-serif;
-      font-size: 4.5rem;
+      font-size: 4rem;
       color: #1b9bff;
-      text-shadow: 0 0 12px #0b67ff, 0 0 25px #0b67ff, 0 0 40px #3ea7ff;
+      text-shadow: 0 0 15px #0b67ff, 0 0 25px #3ea7ff;
       letter-spacing: 0.1em;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
     header p {
-      font-size: 1.5rem;
       font-weight: 600;
+      font-size: 1.3rem;
       color: #a3bffa;
       margin-bottom: 30px;
-      text-shadow: 0 0 8px #4169e1aa;
+      text-shadow: 0 0 10px #4169e1aa;
     }
     .btn-primary {
       background: linear-gradient(45deg, #1b9bff, #0b67ff);
-      color: #fff;
+      color: white;
       padding: 14px 40px;
       border-radius: 40px;
       font-weight: 700;
       font-size: 1.2rem;
       cursor: pointer;
-      box-shadow: 0 0 15px #1b9bffaa;
+      box-shadow: 0 0 20px #1b9bffcc;
       border: none;
       transition: all 0.3s ease;
       user-select: none;
     }
     .btn-primary:hover {
       background: linear-gradient(45deg, #3ea7ff, #1a4fe0);
-      box-shadow: 0 0 25px #3ea7ffcc;
+      box-shadow: 0 0 30px #3ea7ffdd;
       transform: translateY(-3px);
     }
 
+    /* Main content */
     main {
-      flex-grow: 1;
-      max-width: 1200px;
+      max-width: 1000px;
       margin: 0 auto 60px;
-      padding: 20px;
-      z-index: 10;
-      position: relative;
+      padding: 0 20px;
     }
 
-    section {
-      margin-bottom: 80px;
-      animation: fadeSlideIn 0.6s ease forwards;
-      opacity: 0;
-      transform: translateY(40px);
-    }
-    section.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    @keyframes fadeSlideIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    h2 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 2.8rem;
-      color: #3ea7ff;
-      text-shadow: 0 0 10px #0b67ffcc;
-      margin-bottom: 20px;
-    }
-
-    /* Cards estilos */
-    .card {
+    section.card {
       background: #121824;
       border-radius: 20px;
-      box-shadow: 0 0 15px #1b9bff88;
+      box-shadow: 0 0 20px #1b9bff88;
       padding: 30px 25px;
-      margin-top: 25px;
+      margin-bottom: 40px;
       color: #cbd5e1;
-      transition: box-shadow 0.3s ease;
       user-select: none;
-    }
-    .card:hover {
-      box-shadow: 0 0 30px #1b9bffdd;
     }
 
     .server-status {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       text-align: center;
-      margin-top: 15px;
+      margin-top: 18px;
       font-weight: 700;
       color: #7fd1ff;
-      text-shadow: 0 0 8px #1b9bffcc;
+      text-shadow: 0 0 10px #1b9bffcc;
     }
 
-    /* Animar números */
     .number-animated {
       font-family: 'Orbitron', monospace;
       font-size: 3rem;
@@ -179,17 +130,6 @@
       user-select: text;
     }
 
-    /* Discord Widget e iframe */
-    iframe {
-      border-radius: 16px;
-      border: none;
-      box-shadow: 0 0 30px #1b9bff88;
-      width: 100%;
-      max-width: 100%;
-      min-height: 500px;
-    }
-
-    /* Footer */
     footer {
       text-align: center;
       padding: 25px 15px;
@@ -199,30 +139,16 @@
       border-top: 1px solid #11161e;
       background: #0c0e17;
     }
-
-    /* Fundo partículas */
-    #particles {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-      z-index: 1;
-      background: radial-gradient(circle at center, #0c1222, #050615);
-    }
   </style>
 </head>
 <body>
-
-  <canvas id="particles"></canvas>
-
   <nav>
-    <a href="#inicio" class="active" onclick="navigate(event, 'inicio')">Início</a>
-    <a href="#servidor" onclick="navigate(event, 'servidor')">Servidor</a>
-    <a href="#loja" onclick="navigate(event, 'loja')">Loja</a>
-    <a href="#bugs" onclick="navigate(event, 'bugs')">Bugs</a>
-    <a href="#discord" onclick="navigate(event, 'discord')">Discord</a>
-    <a href="#youtube" onclick="navigate(event, 'youtube')">YouTube</a>
+    <a href="index.html" class="active">Início</a>
+    <a href="minigames.html">Minigames</a>
+    <a href="discord.html">Discord</a>
+    <a href="loja.html">Loja</a>
+    <a href="bugs.html">Bugs</a>
+    <a href="youtube.html">YouTube</a>
   </nav>
 
   <header>
@@ -232,57 +158,12 @@
   </header>
 
   <main>
-    <section id="inicio" class="active">
-      <h2>Bem-vindo ao UniversoCraft</h2>
-      <div class="card">
-        <p>🌌 Junte-se a uma comunidade incrível com <strong>40 a 60 minigames no servidor</strong>, eventos diários, sistema de ranks e muito mais!</p>
-        <div class="server-status">
-          <div>🟢 Servidor Online</div>
-          <div>Jogadores online: <span id="playerCount" class="number-animated">0</span></div>
-          <div>IP: <strong>mc.universocraft.com</strong></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="servidor">
-      <h2>Sobre o Servidor</h2>
-      <div class="card">
-        <p><strong>40 a 60 minigames no servidor!</strong></p>
-        <p>Minijogos emocionantes, modos PvP, Survival, eventos semanais, sistema de ranks e loja com itens exclusivos.</p>
-      </div>
-    </section>
-
-    <section id="loja">
-      <h2>Loja Oficial</h2>
-      <div class="card">
-        <p>Compre VIPs, Boosters e Tags personalizadas para se destacar no servidor.</p>
-        <a href="https://tienda.universocraft.com" target="_blank" class="btn-primary" style="padding: 12px 36px;">Visitar Loja</a>
-      </div>
-    </section>
-
-    <section id="bugs">
-      <h2>Reportar Bugs</h2>
-      <div class="card">
-        <p>Encontrou algum problema? Ajude a comunidade reportando bugs.</p>
-        <a href="https://www.universocraft.com/forums/errores-y-bugs/" target="_blank" class="btn-primary" style="padding: 12px 36px;">Reportar Agora</a>
-      </div>
-    </section>
-
-    <section id="discord">
-      <h2>Comunidade no Discord</h2>
-      <div class="card">
-        <p>Converse com outros jogadores e participe de eventos exclusivos no nosso Discord oficial:</p>
-        <a href="https://dsc.gg/universocraft-portugues" target="_blank" class="btn-primary" style="margin-bottom: 20px;">Entrar no Discord</a>
-        <iframe src="https://discord.com/widget?id=1438486171452969024&theme=dark" allowtransparency="true" sandbox="allow-popups allow-same-origin allow-scripts"></iframe>
-      </div>
-    </section>
-
-    <section id="youtube">
-      <h2>Canal do YouTube</h2>
-      <div class="card">
-        <p>Confira vídeos e tutoriais da comunidade UniversoCraft:</p>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/fjhv1NE-s1w?autoplay=0&mute=1" title="Vídeo do UniversoCraft" allowfullscreen></iframe>
-        <a href="https://www.youtube.com/@SpaceCommunity-i2z" target="_blank" class="btn-primary" style="margin-top: 20px;">Visitar Canal</a>
+    <section class="card">
+      <p>🌌 Junte-se a uma comunidade incrível com <strong>40 a 60 minigames no servidor</strong>, eventos diários, sistema de ranks e muito mais!</p>
+      <div class="server-status">
+        <div>🟢 Servidor Online</div>
+        <div>Jogadores online: <span id="playerCount" class="number-animated">0</span></div>
+        <div>IP: <strong>mc.universocraft.com</strong></div>
       </div>
     </section>
   </main>
@@ -290,24 +171,12 @@
   <footer>© 2025 UniversoCraft Português — Criado por fãs. Não oficial.</footer>
 
   <script>
-    // Navegação SPA simples
-    function navigate(event, id) {
-      event.preventDefault();
-      document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-      event.target.classList.add('active');
-      document.querySelectorAll('main section').forEach(s => s.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-      window.scrollTo({top:0, behavior: 'smooth'});
-    }
-
-    // Copiar IP
     function copyIP() {
       navigator.clipboard.writeText("mc.universocraft.com")
         .then(() => alert("IP copiado para a área de transferência!"))
         .catch(() => alert("Não foi possível copiar o IP."));
     }
 
-    // Contador animado dos jogadores online
     const playerCountEl = document.getElementById('playerCount');
 
     async function fetchPlayerCount() {
@@ -324,10 +193,9 @@
       }
     }
 
-    // Função para animar números de forma suave
     function animateNumber(element, target) {
       let current = 0;
-      const increment = target / 60; // 60 frames ~ 1 segundo
+      const increment = target / 60;
       function step() {
         current += increment;
         if (current >= target) {
@@ -341,57 +209,7 @@
     }
 
     fetchPlayerCount();
-    // Atualiza a cada 1 minuto
     setInterval(fetchPlayerCount, 60000);
-
-    // Fundo partículas estilo "space"
-    const canvas = document.getElementById('particles');
-    const ctx = canvas.getContext('2d');
-    let w, h, particles = [];
-
-    function resize() {
-      w = canvas.width = window.innerWidth;
-      h = canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resize);
-    resize();
-
-    class Particle {
-      constructor() {
-        this.x = Math.random() * w;
-        this.y = Math.random() * h;
-        this.radius = Math.random() * 1.5 + 0.5;
-        this.speedY = Math.random() * 0.4 + 0.1;
-        this.alpha = Math.random() * 0.6 + 0.3;
-      }
-      draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(30,144,255,${this.alpha})`;
-        ctx.shadowColor = '#1b9bff';
-        ctx.shadowBlur = 6;
-        ctx.fill();
-      }
-      update() {
-        this.y += this.speedY;
-        if(this.y > h) this.y = 0;
-      }
-    }
-
-    for(let i=0; i<200; i++) {
-      particles.push(new Particle());
-    }
-
-    function animate() {
-      ctx.clearRect(0,0,w,h);
-      particles.forEach(p => {
-        p.update();
-        p.draw();
-      });
-      requestAnimationFrame(animate);
-    }
-    animate();
-
   </script>
 </body>
 </html>

@@ -207,7 +207,7 @@
       margin: 1em 0;
     }
 
-    /* Botão fixo para copiar IP */
+    /* Botão fixo para copiar IP - separado do aviso */
     #copy-ip-btn {
       position: fixed;
       top: 15px;
@@ -432,16 +432,16 @@
           playersElem.textContent = "Offline";
         }
       } catch {
-        document.getElementById("playersOnline").textContent = "Erro";
+        document.getElementById("playersOnline").textContent = "Erro ao carregar";
       }
     }
     updatePlayersOnline();
     setInterval(updatePlayersOnline, 5000);
 
-    // Botão fechar aviso topo
+    // Botão fechar aviso
     const aviso = document.getElementById('aviso-topo');
-    const btnClose = aviso.querySelector('button.close-btn');
-    btnClose.addEventListener('click', () => {
+    const closeBtn = aviso.querySelector('button.close-btn');
+    closeBtn.addEventListener('click', () => {
       aviso.style.display = 'none';
     });
 
@@ -450,7 +450,6 @@
     const copyMsg = document.getElementById('copy-msg');
     copyIpBtn.addEventListener('click', () => {
       navigator.clipboard.writeText('mc.universocraft.com').then(() => {
-        // Mostra mensagem de confirmação
         copyMsg.classList.add('show');
         setTimeout(() => {
           copyMsg.classList.remove('show');

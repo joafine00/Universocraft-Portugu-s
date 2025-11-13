@@ -19,17 +19,37 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      position: relative;
     }
     /* Aviso topo */
     #aviso-topo {
       background: #ff3b3b;
       color: white;
-      padding: 12px 20px;
+      padding: 12px 40px 12px 20px;
       font-weight: 600;
       text-align: center;
       font-size: 1rem;
       box-shadow: 0 2px 8px rgba(255,59,59,0.7);
       z-index: 9999;
+      position: relative;
+    }
+    #aviso-topo button.close-btn {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: transparent;
+      border: none;
+      color: white;
+      font-weight: 900;
+      font-size: 1.2rem;
+      cursor: pointer;
+      padding: 0;
+      line-height: 1;
+      transition: color 0.3s ease;
+    }
+    #aviso-topo button.close-btn:hover {
+      color: #000000cc;
     }
     nav {
       background: rgba(15, 23, 42, 0.95);
@@ -187,6 +207,49 @@
       margin: 1em 0;
     }
 
+    /* Botão fixo para copiar IP */
+    #copy-ip-btn {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      background: #2563eb;
+      color: white;
+      font-weight: 700;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 12px #2563eb;
+      transition: background-color 0.3s ease;
+      z-index: 10000;
+      user-select: none;
+    }
+    #copy-ip-btn:hover {
+      background-color: #1e40af;
+      box-shadow: 0 0 20px #1e40af;
+    }
+
+    /* Mensagem de confirmação da cópia */
+    #copy-msg {
+      position: fixed;
+      top: 60px;
+      right: 15px;
+      background: #16a34a;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-weight: 600;
+      box-shadow: 0 0 15px #16a34a;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 10001;
+    }
+    #copy-msg.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
   </style>
 </head>
 <body>
@@ -194,7 +257,10 @@
   <div id="aviso-topo">
     ⚠️ Este site e o servidor Discord UniversoCraft Português são projetos criados em Portugal por fãs.<br>
     O servidor Minecraft UniversoCraft é o original em espanhol e NÃO está ligado a este site ou Discord.
+    <button class="close-btn" aria-label="Fechar aviso">×</button>
   </div>
+
+  <button id="copy-ip-btn" title="Clique para copiar o IP do servidor">IP: mc.universocraft.com</button>
 
   <nav>
     <a href="#inicio" class="active" onclick="showPage(event, 'inicio')">Início</a>
@@ -207,7 +273,7 @@
 
   <header>
     <h1>🌌 UniversoCraft Português</h1>
-    <p>O maior servidor da galáxia — IP: <strong>mc.universocraft.com</strong></p>
+    <p>O maior servidor da galáxia</p>
   </header>
 
   <main>
@@ -341,6 +407,8 @@
     © 2025 UniversoCraft Português — Site criado em Portugal por fãs.
   </footer>
 
+  <div id="copy-msg">IP copiado para a área de transferência!</div>
+
   <script>
     // Função para mostrar aba
     function showPage(e, id) {
@@ -369,6 +437,28 @@
     }
     updatePlayersOnline();
     setInterval(updatePlayersOnline, 5000);
+
+    // Botão fechar aviso topo
+    const aviso = document.getElementById('aviso-topo');
+    const btnClose = aviso.querySelector('button.close-btn');
+    btnClose.addEventListener('click', () => {
+      aviso.style.display = 'none';
+    });
+
+    // Botão copiar IP
+    const copyIpBtn = document.getElementById('copy-ip-btn');
+    const copyMsg = document.getElementById('copy-msg');
+    copyIpBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText('mc.universocraft.com').then(() => {
+        // Mostra mensagem de confirmação
+        copyMsg.classList.add('show');
+        setTimeout(() => {
+          copyMsg.classList.remove('show');
+        }, 2000);
+      }).catch(() => {
+        alert('Não foi possível copiar o IP. Por favor, copie manualmente: mc.universocraft.com');
+      });
+    });
   </script>
 </body>
 </html>

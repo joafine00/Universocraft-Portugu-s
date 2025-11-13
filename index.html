@@ -7,185 +7,188 @@
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #0d1117;
-      color: #f0f0f0;
+      font-family: 'Poppins', sans-serif;
+      background: #0e0e10;
+      color: #f1f1f1;
     }
-
     header {
-      background: linear-gradient(90deg, #1e3a8a, #2563eb);
-      padding: 30px;
+      background: linear-gradient(90deg, #2563eb, #1e3a8a);
+      padding: 20px;
       text-align: center;
-      color: white;
+      color: #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
-
     header h1 {
-      margin: 0;
       font-size: 2.5em;
+      margin: 0;
     }
-
     nav {
-      background: #111827;
-      padding: 10px;
-      text-align: center;
+      background: #111;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      padding: 15px;
+      flex-wrap: wrap;
     }
-
     nav a {
-      color: #93c5fd;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
-    }
-
-    nav a:hover {
       color: #60a5fa;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
     }
-
+    nav a:hover {
+      color: #93c5fd;
+      text-shadow: 0 0 10px #3b82f6;
+    }
     main {
       max-width: 1000px;
-      margin: 40px auto;
+      margin: 30px auto;
       padding: 0 20px;
     }
-
     section {
+      display: none;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    section.active {
+      display: block;
+    }
+    iframe {
+      border: none;
+      border-radius: 10px;
+      width: 100%;
+    }
+    .server-status {
       background: #1f2937;
       padding: 20px;
-      margin-bottom: 40px;
       border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
-    }
-
-    section h2 {
-      color: #60a5fa;
-      border-bottom: 2px solid #2563eb;
-      padding-bottom: 10px;
-      margin-bottom: 20px;
-    }
-
-    a {
-      color: #3b82f6;
-    }
-
-    footer {
-      background: #111827;
+      margin-top: 20px;
       text-align: center;
-      color: #9ca3af;
-      padding: 20px;
-      margin-top: 50px;
     }
-
-    iframe {
-      border-radius: 10px;
-      border: none;
-    }
-
-    .highlight {
-      color: #22d3ee;
+    .server-status span.online {
+      color: #22c55e;
       font-weight: bold;
+    }
+    .server-status span.offline {
+      color: #ef4444;
+      font-weight: bold;
+    }
+    footer {
+      background: #111;
+      text-align: center;
+      color: #aaa;
+      padding: 15px;
+      margin-top: 50px;
+      font-size: 0.9em;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .btn {
+      display: inline-block;
+      background: #2563eb;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      background: #1e40af;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>UniversoCraft Português</h1>
-    <p>O maior servidor da galáxia — IP: <span class="highlight">mc.universocraft.com</span></p>
+    <h1>🌌 UniversoCraft Português</h1>
+    <p>O maior servidor de Minecraft da galáxia — IP: <strong>mc.universocraft.com</strong></p>
   </header>
 
   <nav>
-    <a href="#sobre">Sobre</a>
-    <a href="#loja">Loja</a>
-    <a href="#bugs">Bugs</a>
-    <a href="#discord">Discord</a>
+    <a href="#inicio" onclick="showPage('inicio')">Início</a>
+    <a href="#servidor" onclick="showPage('servidor')">Servidor</a>
+    <a href="#loja" onclick="showPage('loja')">Loja</a>
+    <a href="#bugs" onclick="showPage('bugs')">Bugs</a>
+    <a href="#discord" onclick="showPage('discord')">Discord</a>
+    <a href="#youtube" onclick="showPage('youtube')">YouTube</a>
   </nav>
 
   <main>
-    <section id="sobre">
-      <h2>Sobre o UniversoCraft</h2>
-      <p>🌌 O <strong>UniversoCraft</strong> é um servidor de Minecraft multijogador com uma das maiores comunidades em língua portuguesa.  
-      Aqui encontras modos de jogo incríveis, eventos diários, sistema de ranks, cosméticos, e uma economia equilibrada — tudo dentro de um universo cheio de diversão e criatividade!</p>
+    <section id="inicio" class="active">
+      <h2>Bem-vindo ao UniversoCraft</h2>
+      <p>🌠 Entra numa galáxia cheia de aventuras no maior servidor de Minecraft em português!  
+      Participa em minijogos, ganha recompensas, sobe de nível e junta-te à nossa comunidade.</p>
+      <div class="server-status" id="serverStatus">
+        ⏳ A verificar status do servidor...
+      </div>
+    </section>
 
-      <p>🌐 IP do servidor: <strong>mc.universocraft.com</strong><br>
-      💬 Comunidade ativa no Discord e fóruns oficiais.<br>
-      🛒 Loja oficial: <a href="https://tienda.universocraft.com" target="_blank">tienda.universocraft.com</a></p>
+    <section id="servidor">
+      <h2>Sobre o Servidor</h2>
+      <p>O <strong>UniversoCraft</strong> oferece uma experiência única com modos como SkyWars, BedWars, Survival, e muito mais!  
+      Contamos com milhares de jogadores ativos, staff dedicada e eventos frequentes.</p>
+
+      <p>🎮 IP: <strong>mc.universocraft.com</strong></p>
+      <p>🌐 Site oficial: <a href="https://www.universocraft.com" target="_blank">www.universocraft.com</a></p>
     </section>
 
     <section id="loja">
       <h2>🛒 Loja do UniversoCraft</h2>
       <p><strong>🎉 Bem-vindo à Loja do UniversoCraft! 🪐</strong></p>
-
-      <p>🛒 Aqui podes comprar <strong>VIPs</strong>, <strong>Boosters</strong>, <strong>Ícones</strong> e <strong>Tags personalizadas</strong> para o teu perfil no servidor.</p>
-
-      <p>🌐 <strong>Acede já:</strong><br>
-      👉 <a href="https://tienda.universocraft.com" target="_blank">tienda.universocraft.com</a></p>
-
-      <hr>
-
-      <p>💎 <strong>O que encontras na loja?</strong></p>
-      <ul>
-        <li>🎖️ VIPs permanentes e temporários</li>
-        <li>🔁 Upgrade de VIP pagando apenas a diferença</li>
-        <li>💬 Cargo exclusivo no Discord oficial do UniversoCraft</li>
-        <li>⚡ Boosters para aumentar experiência e moedas</li>
-        <li>🏷️ Pacotes de ícones e tags, com validade temporária</li>
-      </ul>
-
-      <hr>
-
-      <p>🔒 <strong>Pagamentos 100% seguros via Tebex</strong></p>
-      <p>💳 <strong>Métodos principais aceites:</strong><br>
-      > PayPal • MBWay • Google Pay</p>
-
-      <p>🌍 <strong>Pagamentos alternativos:</strong><br>
-      > Aceitamos praticamente qualquer método de pagamento do mundo!</p>
-
-      <p>💱 <strong>Conversão automática de moeda:</strong><br>
-      > Todos os pagamentos são convertidos para euros, com base no valor do dólar, de forma segura e instantânea.</p>
-
-      <p>📦 <strong>Entrega automática</strong> após confirmação do pagamento.<br>
-      ✏️ Confirma o teu nick Minecraft antes de finalizar a compra!</p>
-
-      <p>🚀 UniversoCraft — Diverte-te no maior servidor da galáxia!</p>
+      <p>Compra VIPs, Boosters, Ícones e muito mais para melhorar tua experiência no servidor!</p>
+      <a href="https://tienda.universocraft.com" target="_blank" class="btn">Acessar Loja Oficial</a>
     </section>
 
     <section id="bugs">
       <h2>🛠️ Reportar Bugs</h2>
-      <p>💥 <strong>Achou um bug no UniversoCraft?</strong> 😵‍💫</p>
-      <p>Nos avise para que possamos resolver o mais rápido possível!  
-      📍 Para isso, acesse o nosso fórum oficial de bugs:</p>
-
-      <p>🔗 <a href="https://www.universocraft.com/forums/errores-y-bugs/" target="_blank"><strong>Reportar Bug</strong></a></p>
-
-      <hr>
-
-      <p>📌 <strong>Dicas importantes ao reportar:</strong></p>
-      <ul>
-        <li>🧠 Seja claro e objetivo na explicação</li>
-        <li>📷 Envie prints, vídeos ou logs (se tiver)</li>
-        <li>⏱️ Informe o momento e local em que aconteceu</li>
-        <li>💬 Mantenha o respeito e a educação</li>
-      </ul>
-
-      <p>🎁 Sua ajuda é essencial para manter o servidor top!  
-      💖 Obrigado por fazer parte da nossa comunidade!  
-      🚀 Vamos juntos deixar o UniversoCraft cada vez melhor!</p>
+      <p>Encontrou algum problema no servidor? Acesse o fórum e reporte para ajudar-nos a melhorar!</p>
+      <a href="https://www.universocraft.com/forums/errores-y-bugs/" target="_blank" class="btn">Reportar Bug</a>
     </section>
 
     <section id="discord">
       <h2>💬 Comunidade no Discord</h2>
-      <p>Entre no servidor oficial do UniversoCraft e interaja com outros jogadores:</p>
-      <iframe src="https://discord.com/widget?id=1438486171452969024&theme=dark"
-              width="100%" height="500"
-              allowtransparency="true"
-              sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
-      </iframe>
+      <p>Entre na comunidade oficial e fale com jogadores, moderadores e criadores:</p>
+      <iframe src="https://discord.com/widget?id=1438486171452969024&theme=dark" height="500" allowtransparency="true" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
     </section>
 
+    <section id="youtube">
+      <h2>🎥 Canal Oficial</h2>
+      <p>Assista aos vídeos da comunidade e eventos no canal oficial:</p>
+      <iframe height="400" src="https://www.youtube.com/embed?listType=user_uploads&list=SpaceCommunity-i2z" allowfullscreen></iframe>
+      <p><a href="https://www.youtube.com/@SpaceCommunity-i2z" target="_blank" class="btn">Visitar Canal no YouTube</a></p>
+    </section>
   </main>
 
   <footer>
-    <p>© 2025 UniversoCraft Português — Site feito por fãs para a comunidade.</p>
+    © 2025 UniversoCraft Português — Criado por fãs. Não oficial.
   </footer>
 
+  <script>
+    // Alternar páginas
+    function showPage(id) {
+      document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
+      window.scrollTo(0, 0);
+    }
+
+    // Exibir status do servidor via API mcsrvstat.us
+    async function loadServerStatus() {
+      const res = await fetch("https://api.mcsrvstat.us/2/mc.universocraft.com");
+      const data = await res.json();
+      const statusDiv = document.getElementById("serverStatus");
+      if (data.online) {
+        statusDiv.innerHTML = `
+          🟢 <span class="online">Servidor Online!</span><br>
+          Jogadores: ${data.players.online} / ${data.players.max}<br>
+          Versão: ${data.version}
+        `;
+      } else {
+        statusDiv.innerHTML = "🔴 <span class='offline'>Servidor Offline</span>";
+      }
+    }
+
+    loadServerStatus();
+  </script>
 </body>
 </html>

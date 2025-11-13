@@ -472,22 +472,40 @@
         copyMsg.textContent = 'IP copiado para a área de transferência!';
         setTimeout(() => {
           copyMsg.textContent = '';
-        }, 3000);
+        }, 2500);
       }).catch(() => {
-        copyMsg.textContent = 'Erro ao copiar. Tenta manualmente.';
+        copyMsg.textContent = 'Falha ao copiar IP.';
       });
     });
 
-    // Atualizar jogadores online (exemplo estático, pode ser dinâmico via API)
-    const playersOnline = document.getElementById('playersOnline');
-    // Simulação de atualização (pode ser substituído por chamada fetch)
-    function atualizarJogadores() {
-      // Exemplo simples: gerar número aleatório entre 250 e 350
-      const jogadores = Math.floor(Math.random() * 100) + 250;
-      playersOnline.textContent = jogadores;
+    // Função para atualizar número de jogadores online usando a API do mvstats
+    async function fetchPlayersOnline() {
+      const playersElem = document.getElementById('playersOnline');
+
+      try {
+        // Endpoint da API mvstats para o servidor UniversoCraft
+        // (substitua o IP e porta pelo correto se necessário)
+        const response = await fetch('https://api.mvstats.net/v1/servers/universocraft.mc.universocraft.com:25565');
+        if (!response.ok) throw new Error('Erro ao buscar dados');
+
+        const data = await response.json();
+
+        // data.onlinePlayers é o número atual de jogadores
+        if (data && typeof data.onlinePlayers === 'number') {
+          playersElem.textContent = data.onlinePlayers.toLocaleString();
+        } else {
+          playersElem.textContent = 'Indisponível';
+        }
+      } catch (error) {
+        console.error('Erro ao obter jogadores online:', error);
+        playersElem.textContent = 'Erro';
+      }
     }
-    atualizarJogadores();
-    setInterval(atualizarJogadores, 15000); // Atualiza a cada 15 segundos
+
+    // Atualizar contador na carga da página e a cada 30 segundos
+    fetchPlayersOnline();
+    setInterval(fetchPlayersOnline, 30000);
   </script>
+
 </body>
 </html>

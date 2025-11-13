@@ -18,6 +18,7 @@
       display: flex;
       flex-direction: column;
       scroll-behavior: smooth;
+      padding-bottom: 60px;
     }
     header {
       background: #161b22;
@@ -60,7 +61,7 @@
     }
     main {
       max-width: 1100px;
-      margin: 30px auto 60px;
+      margin: 30px auto 0;
       padding: 0 20px;
       flex-grow: 1;
     }
@@ -157,25 +158,8 @@
       color: #8b949e;
       user-select: none;
       border-top: 1px solid #30363d;
+      margin-top: 40px;
     }
-    .players-online {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: #238636dd;
-      padding: 14px 22px;
-      border-radius: 10px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: white;
-      box-shadow: 0 0 20px #238636cc;
-      user-select: none;
-      z-index: 999;
-      text-align: center;
-      min-width: 130px;
-      font-family: 'Poppins', sans-serif;
-    }
-
     /* Markdown styled blocks */
     .markdown {
       background: #0d1117dd;
@@ -211,12 +195,46 @@
       border-top: 1px solid #30363d;
       margin: 18px 0;
     }
-
     /* Animations */
     @keyframes fadeIn {
       0% {opacity: 0; transform: translateY(10px);}
       100% {opacity: 1; transform: translateY(0);}
     }
+
+    /* Players Online Card - discreto e animado */
+    #playersCard {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, #238636, #2ea043);
+      color: white;
+      padding: 14px 22px;
+      border-radius: 16px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      box-shadow: 0 0 20px #2ea043cc;
+      user-select: none;
+      z-index: 1000;
+      min-width: 140px;
+      text-align: center;
+      cursor: default;
+      font-family: 'Poppins', sans-serif;
+      transition: box-shadow 0.3s ease;
+      animation: pulseGlow 2.5s ease-in-out infinite;
+    }
+    #playersCard:hover {
+      box-shadow: 0 0 35px #38c758cc;
+      animation-play-state: paused;
+    }
+    @keyframes pulseGlow {
+      0%, 100% {
+        box-shadow: 0 0 20px #2ea043cc;
+      }
+      50% {
+        box-shadow: 0 0 35px #38c758cc;
+      }
+    }
+
     @media (max-width: 720px) {
       header {
         flex-direction: column;
@@ -232,10 +250,12 @@
       iframe {
         height: 250px;
       }
-      .players-online {
-        min-width: 100px;
+      #playersCard {
+        bottom: 15px;
+        right: 15px;
+        padding: 12px 18px;
         font-size: 1rem;
-        padding: 10px 16px;
+        min-width: 120px;
       }
     }
   </style>
@@ -254,7 +274,9 @@
     </nav>
   </header>
 
-  <div class="players-online" id="playersOnline">Jogadores: -- / 20000</div>
+  <div id="playersCard" aria-live="polite" aria-atomic="true" title="Jogadores online no servidor UniversoCraft">
+    Jogadores: -- / 20000
+  </div>
 
   <main>
     <section id="inicio" class="active">
@@ -272,7 +294,7 @@
       <div class="markdown">
         <p>🛡️ <strong>UniversoCraft</strong> funciona com versões <strong>1.8 até 1.21</strong>, oferecendo estabilidade e compatibilidade para todos os jogadores.</p>
         <p>Contamos com dezenas de minigames, modos de jogo exclusivos e eventos frequentes.</p>
-        <p>Quer saber quantos jogadores estão online? Fique de olho no contador no canto superior direito!</p>
+        <p>Quer saber quantos jogadores estão online? Fique de olho no card verde no canto inferior direito!</p>
         <hr>
         <p>🌟 Nosso foco é entregar uma experiência divertida, justa e cheia de novidades para a comunidade Minecraft portuguesa.</p>
       </div>
@@ -378,26 +400,26 @@
         .catch(() => alert('Falha ao copiar o IP'));
     }
 
-    // Atualizar número de jogadores online via mvstats API (https://api.mcstats.org)
+    // Atualizar número de jogadores online via mvstats API (UniversoCraft IP)
     async function updatePlayersOnline() {
-      const el = document.getElementById('playersOnline');
+      const el = document.getElementById('playersCard');
       try {
         const res = await fetch('https://api.mcstats.org/v2/server/mc.universocraft.com');
         if (!res.ok) throw new Error('Erro ao buscar dados');
         const data = await res.json();
         if (data && data.players && typeof data.players.online === 'number') {
-          const online = data.players.online;
-          el.textContent = `Jogadores: ${online} / 20000`;
+          el.textContent = `Jogadores: ${data.players.online} / 20000`;
         } else {
-          el.textContent = `Jogadores: -- / 20000`;
+          el.textContent = 'Jogadores: -- / 20000';
         }
-      } catch {
-        el.textContent = `Jogadores: -- / 20000`;
+      } catch (err) {
+        el.textContent = 'Jogadores: -- / 20000';
       }
     }
 
+    // Atualiza a cada 5 segundos
     updatePlayersOnline();
-    setInterval(updatePlayersOnline, 15000); // Atualiza a cada 15 segundos
+    setInterval(updatePlayersOnline, 5000);
   </script>
 
 </body>

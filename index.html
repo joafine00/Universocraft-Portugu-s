@@ -485,7 +485,7 @@
       try {
         // Endpoint da API mvstats para o servidor UniversoCraft
         // (substitua o IP e porta pelo correto se necessário)
-        const response = await fetch('https://api.mvstats.net/v1/servers/universocraft.mc.universocraft.com:25565');
+        const response = await fetch('https://mcsrvstat.us/server/mc.universocraft.com');
         if (!response.ok) throw new Error('Erro ao buscar dados');
 
         const data = await response.json();

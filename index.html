@@ -1,443 +1,472 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>UniversoCraft Português</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-    }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: #0a0f1a;
-      color: #e0e7ff;
-      min-height: 100vh;
-      overflow-x: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-      padding-top: 70px;
-    }
-    nav {
-      position: fixed;
-      top: 0; left: 0; width: 100%;
-      background: rgba(15, 23, 42, 0.95);
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      padding: 15px 0;
-      backdrop-filter: blur(10px);
-      z-index: 100;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.8);
-    }
-    nav a {
-      color: #93c5fd;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.1rem;
-      padding: 6px 14px;
-      border-radius: 6px;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      user-select: none;
-    }
-    nav a:hover, nav a.active {
-      color: white;
-      background: #2563eb;
-      box-shadow: 0 0 15px #2563eb;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>UniversoCraft Português</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-    main {
-      max-width: 960px;
-      width: 95%;
-      margin-bottom: 40px;
-      position: relative;
-      z-index: 10;
-    }
+  /* Reset & base */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: #0f111a;
+    color: #d1d5db;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  a {
+    color: #3b82f6;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  /* Container */
+  #app {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 20px 40px;
+    position: relative;
+    z-index: 10;
+  }
 
-    section {
-      display: none;
-      animation: fadeIn 0.5s ease forwards;
-    }
-    section.active {
-      display: block;
-    }
+  /* Navbar */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: saturate(180%) blur(10px);
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    padding: 16px 0;
+    z-index: 1000;
+    box-shadow: 0 0 15px #2563eb66;
+  }
+  nav button {
+    background: none;
+    border: none;
+    color: #93c5fd;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  nav button.active,
+  nav button:hover {
+    color: #e0e7ff;
+    background-color: #2563eb;
+    box-shadow: 0 0 10px #2563eb;
+  }
 
-    h1, h2, h3 {
-      color: #60a5fa;
-      margin-bottom: 15px;
-      text-shadow: 0 0 10px #3b82f6;
-    }
-    p, ul {
-      color: #cbd5e1;
-      line-height: 1.6;
-      margin-bottom: 18px;
-    }
-    ul {
-      padding-left: 20px;
-    }
-    li {
-      margin-bottom: 8px;
-    }
-    strong {
-      color: #93c5fd;
-    }
-    a.btn {
-      display: inline-block;
-      background: #2563eb;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      box-shadow: 0 0 12px #2563eb;
-      transition: background-color 0.3s ease;
-      margin-top: 10px;
-    }
-    a.btn:hover {
-      background: #1e40af;
-    }
+  /* Sections */
+  section {
+    display: none;
+    animation: fadeIn 0.5s ease forwards;
+  }
+  section.active {
+    display: block;
+  }
 
-    /* Server Status Box */
-    #serverStatus {
-      background: rgba(30, 41, 59, 0.85);
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 20px #2563eb;
-      text-align: center;
-      font-weight: 600;
-      font-size: 1.2rem;
-      max-width: 300px;
-      margin: 20px auto 0 auto;
-      color: #60a5fa;
-    }
+  /* Header */
+  header {
+    text-align: center;
+    margin-bottom: 60px;
+    user-select: none;
+  }
+  header h1 {
+    font-size: 3.6rem;
+    font-weight: 900;
+    color: #3b82f6;
+    text-shadow: 0 0 25px #2563eb;
+  }
+  header p {
+    font-size: 1.25rem;
+    margin-top: 8px;
+    color: #9ca3af;
+  }
+  .btn-primary {
+    margin-top: 22px;
+    display: inline-block;
+    background-color: #2563eb;
+    color: #fff;
+    font-weight: 700;
+    padding: 14px 28px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px #2563eb;
+    transition: background-color 0.3s ease;
+    user-select: none;
+  }
+  .btn-primary:hover {
+    background-color: #1e40af;
+  }
 
-    /* YouTube iframe */
-    iframe {
-      border-radius: 12px;
-      border: none;
-      max-width: 100%;
-      box-shadow: 0 0 25px #3b82f6;
-    }
+  /* Server Info Card */
+  .server-info {
+    background: #1e293b;
+    border-radius: 16px;
+    padding: 30px 40px;
+    max-width: 500px;
+    margin: 0 auto 40px;
+    box-shadow: 0 0 30px #2563eb50;
+  }
+  .server-info h2 {
+    color: #60a5fa;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-align: center;
+  }
+  .server-info p {
+    font-size: 1.15rem;
+    margin: 6px 0;
+    text-align: center;
+  }
+  .players-count {
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: #3b82f6;
+    margin-top: 12px;
+    text-align: center;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px #2563eb;
+  }
 
-    /* Player count fixed at bottom right */
-    #playerCount {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: rgba(15, 23, 42, 0.9);
-      padding: 14px 22px;
-      border-radius: 50px;
-      color: #60a5fa;
-      font-weight: 700;
-      font-size: 1.1rem;
-      box-shadow: 0 0 20px #2563eb;
-      user-select: none;
-      z-index: 200;
-      font-family: 'Poppins', sans-serif;
-    }
+  /* Cards Grid */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 24px;
+    margin-top: 40px;
+  }
+  .card {
+    background: #1e293b;
+    border-radius: 16px;
+    padding: 24px 20px;
+    box-shadow: 0 0 20px #2563eb30;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
+  }
+  .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 30px #3b82f6cc;
+  }
+  .card h3 {
+    font-size: 1.5rem;
+    color: #60a5fa;
+    margin-bottom: 12px;
+  }
+  .card p {
+    font-size: 1rem;
+    line-height: 1.4;
+    color: #cbd5e1;
+  }
 
-    /* Fade animation */
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(10px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
+  /* Footer */
+  footer {
+    margin-top: 60px;
+    padding: 24px 0;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #64748b;
+    user-select: none;
+  }
 
-    /* Particle background */
-    canvas#particles {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: 1;
-      pointer-events: none;
-      background: radial-gradient(circle at center, #0a0f1a, #000);
-    }
+  /* YouTube Embed */
+  .youtube-container {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 0 30px #2563eb55;
+  }
+  .youtube-container iframe {
+    width: 100%;
+    height: 450px;
+    border: none;
+  }
 
-    /* Header with IP and button */
-    header {
-      text-align: center;
-      margin-bottom: 40px;
-      color: #3b82f6;
-      text-shadow: 0 0 20px #2563eb;
-      user-select: none;
-    }
-    header h1 {
-      font-size: 3rem;
-      margin-bottom: 8px;
-    }
-    header p {
-      font-size: 1.3rem;
-      color: #a5b4fc;
-      margin-bottom: 18px;
-    }
-    button.copy-ip {
-      background: #2563eb;
-      color: white;
-      border: none;
-      padding: 12px 24px;
-      border-radius: 50px;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 1rem;
-      box-shadow: 0 0 20px #2563eb;
-      transition: background-color 0.3s ease;
-    }
-    button.copy-ip:hover {
-      background: #1e40af;
-    }
+  /* Animations */
+  @keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
 
-    /* Responsive */
-    @media(max-width: 600px) {
-      nav {
-        gap: 15px;
-        padding: 12px 0;
-      }
-      nav a {
-        font-size: 0.95rem;
-        padding: 6px 10px;
-      }
-      header h1 {
-        font-size: 2.2rem;
-      }
-      header p {
-        font-size: 1rem;
-      }
-      #serverStatus {
-        max-width: 90%;
-      }
-    }
-  </style>
+  /* Background canvas */
+  canvas#bg-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+    background: linear-gradient(135deg, #0f111a 0%, #151828 70%);
+  }
+</style>
 </head>
 <body>
 
-  <canvas id="particles"></canvas>
+<canvas id="bg-canvas"></canvas>
 
-  <nav>
-    <a href="#inicio" class="active" onclick="switchTab(event, 'inicio')">Início</a>
-    <a href="#servidor" onclick="switchTab(event, 'servidor')">Servidor</a>
-    <a href="#loja" onclick="switchTab(event, 'loja')">Loja</a>
-    <a href="#bugs" onclick="switchTab(event, 'bugs')">Bugs</a>
-    <a href="#discord" onclick="switchTab(event, 'discord')">Discord</a>
-    <a href="#youtube" onclick="switchTab(event, 'youtube')">YouTube</a>
-  </nav>
+<nav aria-label="Menu de navegação">
+  <button class="active" aria-current="page" data-page="inicio">Início</button>
+  <button data-page="servidor">Servidor</button>
+  <button data-page="loja">Loja</button>
+  <button data-page="bugs">Bugs</button>
+  <button data-page="discord">Discord</button>
+  <button data-page="youtube">YouTube</button>
+</nav>
 
-  <main>
-    <header>
-      <h1>🌌 UniversoCraft Português</h1>
-      <p>O maior servidor da galáxia — IP: <strong>mc.universocraft.com</strong></p>
-      <button class="copy-ip" onclick="copyIP()">🎮 Copiar IP para jogar</button>
-    </header>
+<div id="app" role="main" tabindex="-1">
 
-    <section id="inicio" class="active">
-      <h2>Bem-vindo ao UniversoCraft</h2>
-      <p>🌠 O UniversoCraft é uma comunidade gigantesca de Minecraft, com <strong>40 a 60 minigames</strong>, eventos, ranks e muito mais! Tudo isso num único servidor que é referência na galáxia.</p>
-      <div id="serverStatus">Carregando status do servidor...</div>
-    </section>
+  <header>
+    <h1>🌌 UniversoCraft Português</h1>
+    <p>O maior servidor da galáxia — IP: <strong>mc.universocraft.com</strong></p>
+    <a href="#" class="btn-primary" id="copy-ip-btn" aria-label="Copiar IP do servidor para área de transferência">🎮 Jogar Agora</a>
+  </header>
 
-    <section id="servidor">
-      <h2>Sobre o Servidor</h2>
-      <p>O UniversoCraft é um servidor Minecraft dinâmico e cheio de novidades. Com <strong>40 a 60 minigames</strong>, você pode escolher seu modo favorito, competir e se divertir com milhares de jogadores. </p>
-      <p>O IP oficial para conexão é: <strong>mc.universocraft.com</strong>.</p>
-      <p>Nosso objetivo é criar uma experiência única, divertida e envolvente para todos os públicos, mantendo a comunidade ativa e saudável.</p>
-      <ul>
-        <li>✔️ Minigames variados</li>
-        <li>✔️ Eventos frequentes</li>
-        <li>✔️ Sistema de ranks e personalizações</li>
-        <li>✔️ Suporte e comunidade dedicada</li>
-      </ul>
-    </section>
+  <!-- Páginas/Seções -->
 
-    <section id="loja">
-      <h2>🛒 Loja Oficial do UniversoCraft</h2>
-      <p>🎉 <strong>Bem-vindo à Loja do UniversoCraft!</strong> 🪐</p>
-      <p>🛒 Aqui podes comprar <strong>VIPs</strong>, <strong>Boosters</strong>, <strong>Ícones</strong> e <strong>Tags personalizadas</strong> para o teu perfil no servidor.</p>
-      <p>🌐 <strong>Acede já:</strong><br>
-        👉 <a href="https://tienda.universocraft.com" target="_blank" rel="noopener noreferrer" style="color:#60a5fa;">tienda.universocraft.com</a>
-      </p>
-      <hr style="border-color:#2563eb; margin: 20px 0;">
-      <h3>O que encontras na loja?</h3>
-      <ul>
-        <li>🎖️ VIPs <strong>permanentes e temporários</strong></li>
-        <li>🔁 <strong>Upgrade de VIP</strong> pagando apenas a diferença</li>
-        <li>💬 <strong>Cargo exclusivo</strong> no Discord oficial do UniversoCraft</li>
-        <li>⚡ <strong>Boosters</strong> para aumentar experiência e moedas</li>
-        <li>🏷️ <strong>Pacotes de ícones e tags</strong>, com validade temporária</li>
-      </ul>
-      <hr style="border-color:#2563eb; margin: 20px 0;">
-      <p>🔒 <strong>Pagamentos 100% seguros via Tebex</strong></p>
-      <p>💳 <strong>Métodos principais aceites:</strong><br> PayPal • MBWay • Google Pay</p>
-      <p>🌍 <strong>Pagamentos alternativos:</strong><br> Aceitamos praticamente <strong>qualquer método de pagamento do mundo!</strong></p>
-      <p>💱 <strong>Conversão automática de moeda:</strong><br> Todos os pagamentos são convertidos para <strong>euros</strong>, com base no valor do <strong>dólar</strong>, de forma <strong>segura e instantânea</strong>.</p>
-      <hr style="border-color:#2563eb; margin: 20px 0;">
-      <p>📦 <strong>Entrega automática</strong> após confirmação do pagamento.</p>
-      <p>✏️ <strong>Confirma o teu nick Minecraft antes de finalizar a compra!</strong></p>
-      <hr style="border-color:#2563eb; margin: 20px 0;">
-      <p>🚀 <strong>UniversoCraft — Diverte-te no maior servidor da galáxia!</strong></p>
-    </section>
+  <section id="inicio" class="active" tabindex="0" aria-label="Página inicial">
+    <div class="server-info" aria-live="polite" aria-atomic="true">
+      <h2>Status do Servidor</h2>
+      <p>🟢 Servidor Online</p>
+      <p>Versões suportadas: <strong>1.8 até 1.21</strong></p>
+      <p>Minigames disponíveis: <strong>40 a 60</strong></p>
+      <p class="players-count" id="players-count">...</p>
+    </div>
+    <p style="text-align:center; max-width:600px; margin: 0 auto; font-style: italic; color: #9ca3af;">
+      🌠 Bem-vindo ao UniversoCraft! Explore minigames, eventos, ranks e uma comunidade incrível de Minecraft!
+    </p>
+  </section>
 
-    <section id="bugs">
-      <h2>🛠️ Reportar Bugs</h2>
-      <p>🛠️💥 <strong>Achou um bug no UniversoCraft?</strong> 😵‍💫</p>
-      <p>Nos avise para que possamos resolver o mais rápido possível!</p>
-      <p>📍 Para isso, <strong>acesse o nosso fórum oficial de bugs</strong>:</p>
-      <p>🔗 <a href="https://www.universocraft.com/forums/errores-y-bugs/" target="_blank" rel="noopener noreferrer" style="color:#60a5fa;">Reportar Bug</a></p>
-      <hr style="border-color:#2563eb; margin: 20px 0;">
-      <h3>Dicas importantes ao reportar:</h3>
-      <ul>
-        <li>🧠 Seja <strong>claro e objetivo</strong> na explicação</li>
-        <li>📷 Envie <strong>prints, vídeos ou logs</strong> (se tiver)</li>
-        <li>⏱️ Informe o <strong>momento e local</strong> em que aconteceu</li>
-        <li>💬 Mantenha o <strong>respeito e a educação</strong></li>
-      </ul>
-      <hr style="border-color:#2563eb; margin: 20px 0;">
-      <p>🎁 <strong>Sua ajuda é essencial para manter o servidor top!</strong><br>💖 Obrigado por fazer parte da nossa comunidade!<br>🚀 Vamos juntos deixar o UniversoCraft cada vez melhor!</p>
-    </section>
-
-    <section id="discord">
-      <h2>💬 Comunidade Oficial no Discord</h2>
-      <p>Junte-se ao nosso servidor oficial para conversar, tirar dúvidas e ficar por dentro das novidades:</p>
-      <a href="https://dsc.gg/universocraft-portugues" target="_blank" rel="noopener noreferrer" class="btn">Entrar no Discord</a>
-    </section>
-
-    <section id="youtube">
-      <h2>🎥 Canal Oficial no YouTube</h2>
-      <p>Confira o trailer oficial do UniversoCraft e fique por dentro das novidades da comunidade.</p>
-      <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:12px; box-shadow: 0 0 25px #3b82f6; margin-bottom: 20px;">
-        <iframe 
-          src="https://www.youtube.com/embed/fjhv1NE-s1w?rel=0" 
-          title="Trailer Oficial UniversoCraft" 
-          allowfullscreen 
-          style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;">
-        </iframe>
+  <section id="servidor" tabindex="0" aria-label="Informações sobre o servidor">
+    <h2>Modos e Detalhes do Servidor</h2>
+    <div class="cards-grid">
+      <div class="card">
+        <h3>🛠️ Diversidade de Minigames</h3>
+        <p>Oferecemos entre <strong>40 a 60 minigames</strong> para toda a comunidade, com muita variedade para você se divertir!</p>
       </div>
-      <a href="https://www.youtube.com/@SpaceCommunity-i2z" target="_blank" rel="noopener noreferrer" class="btn">Visitar Canal no YouTube</a>
-    </section>
+      <div class="card">
+        <h3>🌍 Mundo Vivo e Atualizado</h3>
+        <p>Ambientes dinâmicos, eventos constantes e novidades frequentes para manter a diversão sempre ativa.</p>
+      </div>
+      <div class="card">
+        <h3>🎖️ Ranks e Progressão</h3>
+        <p>Suba no ranking com VIPs e conquiste status exclusivos no servidor e no Discord oficial.</p>
+      </div>
+      <div class="card">
+        <h3>⚡ Tecnologia</h3>
+        <p>Servidor rodando em versões <strong>1.8 a 1.21</strong>, garantindo compatibilidade ampla para jogadores.</p>
+      </div>
+    </div>
+  </section>
 
-  </main>
+  <section id="loja" tabindex="0" aria-label="Loja oficial UniversoCraft">
+    <h2>🛒 Loja Oficial UniversoCraft</h2>
+    <p>🎉 <strong>Bem-vindo à Loja do UniversoCraft!</strong></p>
+    <p>🛒 Aqui podes comprar <strong>VIPs</strong>, <strong>Boosters</strong>, <strong>Ícones</strong> e <strong>Tags personalizadas</strong> para o teu perfil no servidor.</p>
+    <p>🌐 <strong>Acede já:</strong> <a href="https://tienda.universocraft.com" target="_blank" rel="noopener">tienda.universocraft.com</a></p>
 
-  <div id="playerCount" title="Jogadores Online"></div>
+    <hr style="margin: 20px 0; border-color: #3b82f6aa;">
 
-  <footer style="text-align:center; padding: 15px 0; color: #64748b; font-size: 0.9rem; user-select:none;">
-    © 2025 UniversoCraft Português — Site criado por fãs. Não oficial.
-  </footer>
+    <h3>O que encontras na loja?</h3>
+    <ul>
+      <li>🎖️ VIPs <strong>permanentes e temporários</strong></li>
+      <li>🔁 <strong>Upgrade de VIP</strong> pagando apenas a diferença</li>
+      <li>💬 <strong>Cargo exclusivo</strong> no Discord oficial do UniversoCraft</li>
+      <li>⚡ <strong>Boosters</strong> para aumentar experiência e moedas</li>
+      <li>🏷️ <strong>Pacotes de ícones e tags</strong>, com validade temporária</li>
+    </ul>
 
-  <script>
-    // Gerenciar troca de abas
-    function switchTab(event, tabId) {
-      event.preventDefault();
+    <hr style="margin: 20px 0; border-color: #3b82f6aa;">
 
-      // Atualiza links de navegação
-      document.querySelectorAll('nav a').forEach(link => {
-        link.classList.remove('active');
-      });
-      event.currentTarget.classList.add('active');
+    <h3>Pagamentos</h3>
+    <p>🔒 Pagamentos 100% seguros via Tebex</p>
+    <p>💳 Métodos principais aceites: PayPal • MBWay • Google Pay</p>
+    <p>🌍 Pagamentos alternativos: Aceitamos praticamente qualquer método do mundo!</p>
+    <p>💱 Conversão automática para euros, baseada no valor do dólar.</p>
 
-      // Mostrar seção certa
-      document.querySelectorAll('main section').forEach(section => {
-        section.classList.remove('active');
-      });
-      document.getElementById(tabId).classList.add('active');
+    <p>📦 Entrega automática após confirmação do pagamento.</p>
+    <p>✏️ Confirma o teu nick Minecraft antes de finalizar a compra!</p>
 
-      window.scrollTo(0, 0);
-    }
+    <p>🚀 UniversoCraft — Diverte-te no maior servidor da galáxia!</p>
+    <a href="https://tienda.universocraft.com" target="_blank" rel="noopener" class="btn-primary">Aceder à Loja</a>
+  </section>
 
-    // Copiar IP do servidor para o clipboard
-    function copyIP() {
-      navigator.clipboard.writeText('mc.universocraft.com').then(() => {
-        alert('IP copiado: mc.universocraft.com');
-      }).catch(() => {
-        alert('Falha ao copiar o IP. Por favor, copie manualmente: mc.universocraft.com');
-      });
-    }
+  <section id="bugs" tabindex="0" aria-label="Reportar bugs no UniversoCraft">
+    <h2>🛠️ Reportar Bugs</h2>
+    <p>Encontrou algum erro no servidor? Ajude-nos a melhorar!</p>
+    <p>Nos avise para que possamos resolver o mais rápido possível!</p>
+    <p>📍 Para isso, acesse nosso fórum oficial de bugs:</p>
+    <p><a href="https://www.universocraft.com/forums/errores-y-bugs/" target="_blank" rel="noopener">🔗 Reportar Bug</a></p>
 
-    // Atualiza contador de jogadores no servidor (usando api.mcsrvstat.us)
-    async function updatePlayerCount() {
-      const el = document.getElementById('playerCount');
-      try {
-        const response = await fetch('https://api.mcsrvstat.us/2/mc.universocraft.com');
-        const data = await response.json();
+    <hr style="margin: 20px 0; border-color: #3b82f6aa;">
 
-        if(data.online && data.players && data.players.max) {
-          const online = data.players.online || 0;
-          const max = data.players.max || 20000; // fallback 20000
-          el.textContent = `${online} / ${max} players online`;
-        } else {
-          el.textContent = 'Servidor Offline';
-        }
-      } catch (e) {
-        el.textContent = 'Erro ao obter status do servidor';
+    <h3>Dicas importantes ao reportar:</h3>
+    <ul>
+      <li>🧠 Seja claro e objetivo na explicação</li>
+      <li>📷 Envie prints, vídeos ou logs (se tiver)</li>
+      <li>⏱️ Informe o momento e local em que aconteceu</li>
+      <li>💬 Mantenha respeito e educação</li>
+    </ul>
+
+    <p>🎁 Sua ajuda é essencial para manter o servidor top!</p>
+    <p>💖 Obrigado por fazer parte da nossa comunidade!</p>
+    <p>🚀 Vamos juntos deixar o UniversoCraft cada vez melhor!</p>
+  </section>
+
+  <section id="discord" tabindex="0" aria-label="Link oficial do Discord UniversoCraft">
+    <h2>💬 Comunidade Oficial no Discord</h2>
+    <p>Junte-se à nossa comunidade para conversar, participar de eventos e ficar por dentro das novidades.</p>
+    <p><a href="https://dsc.gg/universocraft-portugues" target="_blank" rel="noopener" class="btn-primary">Entrar no Discord</a></p>
+  </section>
+
+  <section id="youtube" tabindex="0" aria-label="Canal do YouTube UniversoCraft">
+    <h2>🎥 Trailer Oficial no YouTube</h2>
+    <div class="youtube-container" aria-label="Player do vídeo no YouTube">
+      <iframe
+        src="https://www.youtube.com/embed/fjhv1NE-s1w?rel=0"
+        title="Trailer Oficial UniversoCraft"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+    <p>Visite o canal oficial para mais vídeos e conteúdo exclusivo:</p>
+    <p><a href="https://www.youtube.com/@SpaceCommunity-i2z" target="_blank" rel="noopener">Canal YouTube @SpaceCommunity-i2z</a></p>
+  </section>
+
+</div>
+
+<footer aria-label="Rodapé">
+  © 2025 UniversoCraft Português — Criado por fãs. Não oficial.
+</footer>
+
+<script>
+  // Navegação das abas
+  const buttons = document.querySelectorAll('nav button');
+  const sections = document.querySelectorAll('main section, #app > section');
+
+  function showPage(id) {
+    sections.forEach(s => s.classList.remove('active'));
+    buttons.forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    document.querySelector(`nav button[data-page="${id}"]`).classList.add('active');
+    // Move foco para a seção para acessibilidade
+    document.getElementById(id).focus();
+  }
+
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      showPage(button.getAttribute('data-page'));
+    });
+  });
+
+  // Copiar IP
+  const copyBtn = document.getElementById('copy-ip-btn');
+  copyBtn.addEventListener('click', e => {
+    e.preventDefault();
+    navigator.clipboard.writeText('mc.universocraft.com').then(() => {
+      alert('IP copiado: mc.universocraft.com');
+    });
+  });
+
+  // Atualizar contador de jogadores via API mcsrvstat.us
+  const playersCountEl = document.getElementById('players-count');
+
+  async function updateServerStatus() {
+    try {
+      const res = await fetch('https://api.mcsrvstat.us/2/mc.universocraft.com');
+      if (!res.ok) throw new Error('Erro ao carregar API');
+      const data = await res.json();
+
+      if (data.online) {
+        // Exibe "online / max"
+        const online = data.players?.online ?? 0;
+        const max = data.players?.max ?? '??';
+        playersCountEl.textContent = `${online.toLocaleString()} / ${max.toLocaleString()}`;
+      } else {
+        playersCountEl.textContent = 'Offline';
       }
+    } catch {
+      playersCountEl.textContent = 'Indisponível';
+    }
+  }
+  updateServerStatus();
+  // Atualiza a cada 60 segundos
+  setInterval(updateServerStatus, 60000);
+
+  // Fundo animado futurista com linhas diagonais e grid sutil
+  const canvas = document.getElementById('bg-canvas');
+  const ctx = canvas.getContext('2d');
+  let w, h;
+  const lines = [];
+  const gridSize = 50;
+
+  function resize() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+
+    lines.length = 0;
+    // Criar linhas diagonais em 2 direções
+    for (let i = -h; i < w; i += gridSize) {
+      lines.push({x: i, y: 0, dir: 1}); // diagonal /
+      lines.push({x: i, y: h, dir: -1}); // diagonal \
+    }
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+
+    // Fundo degrade
+    const grad = ctx.createLinearGradient(0, 0, w, h);
+    grad.addColorStop(0, '#0f111a');
+    grad.addColorStop(1, '#151828');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, w, h);
+
+    // Grid sutil
+    ctx.strokeStyle = 'rgba(60, 85, 160, 0.15)';
+    ctx.lineWidth = 1;
+    for(let x=0; x<w; x+=gridSize) {
+      ctx.beginPath();
+      ctx.moveTo(x,0);
+      ctx.lineTo(x,h);
+      ctx.stroke();
+    }
+    for(let y=0; y<h; y+=gridSize) {
+      ctx.beginPath();
+      ctx.moveTo(0,y);
+      ctx.lineTo(w,y);
+      ctx.stroke();
     }
 
-    updatePlayerCount();
-    // Atualiza a cada 15 segundos
-    setInterval(updatePlayerCount, 15000);
+    // Linhas diagonais animadas
+    ctx.strokeStyle = 'rgba(60, 130, 250, 0.25)';
+    ctx.lineWidth = 1.5;
+    lines.forEach(line => {
+      ctx.beginPath();
+      ctx.moveTo(line.x, line.y);
+      if(line.dir === 1) ctx.lineTo(line.x + h, line.y + h);
+      else ctx.lineTo(line.x + h, line.y - h);
+      ctx.stroke();
 
-    // Fundo com partículas estilo espaço
-    const canvas = document.getElementById('particles');
-    const ctx = canvas.getContext('2d');
-    let w, h, particles = [];
+      line.x += 0.6;
+      if(line.x > w + h) line.x = -h;
+    });
 
-    function resize() {
-      w = canvas.width = window.innerWidth;
-      h = canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resize);
-    resize();
+    requestAnimationFrame(draw);
+  }
+  draw();
 
-    function random(min, max) {
-      return Math.random() * (max - min) + min;
-    }
+</script>
 
-    class Particle {
-      constructor() {
-        this.x = random(0, w);
-        this.y = random(0, h);
-        this.size = random(0.5, 1.5);
-        this.speedX = random(-0.2, 0.2);
-        this.speedY = random(-0.2, 0.2);
-        this.opacity = random(0.1, 0.6);
-      }
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        if(this.x > w) this.x = 0;
-        if(this.x < 0) this.x = w;
-        if(this.y > h) this.y = 0;
-        if(this.y < 0) this.y = h;
-      }
-      draw() {
-        ctx.beginPath();
-        ctx.fillStyle = `rgba(96,165,250,${this.opacity})`;
-        ctx.shadowColor = '#60a5fa';
-        ctx.shadowBlur = 10;
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
-
-    function initParticles(count=80) {
-      particles = [];
-      for(let i = 0; i < count; i++) {
-        particles.push(new Particle());
-      }
-    }
-    initParticles();
-
-    function animate() {
-      ctx.clearRect(0, 0, w, h);
-      particles.forEach(p => {
-        p.update();
-        p.draw();
-      });
-      requestAnimationFrame(animate);
-    }
-    animate();
-
-  </script>
 </body>
 </html>

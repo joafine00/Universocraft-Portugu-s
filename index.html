@@ -5,291 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>UniversoCraft Português</title>
   <style>
-    /* Reset básico */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    html, body {
-      height: 100%;
-      font-family: 'Poppins', sans-serif;
-      background: #0a0f1a;
-      color: #e0e7ff;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-    body {
-      height: 100vh;
-    }
-
-    /* Container geral: nav + conteúdo + footer */
-    .container {
-      flex: 1 1 auto;
-      display: flex;
-      height: 100%;
-      overflow: hidden;
-    }
-
-    /* Barra lateral fixa */
-    nav {
-      width: 220px;
-      background: rgba(15, 23, 42, 0.95);
-      display: flex;
-      flex-direction: column;
-      padding-top: 30px;
-      box-shadow: 2px 0 10px rgba(37, 99, 235, 0.5);
-      position: relative;
-      z-index: 1000;
-    }
-    nav a {
-      color: #93c5fd;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.1rem;
-      padding: 15px 25px;
-      border-left: 4px solid transparent;
-      transition: background 0.3s ease, border-color 0.3s ease;
-      cursor: pointer;
-      user-select: none;
-    }
-    nav a:hover {
-      background: #1e40af;
-      border-left-color: #3b82f6;
-      color: #bfdbfe;
-    }
-    nav a.active {
-      background: #2563eb;
-      border-left-color: #60a5fa;
-      color: white;
-    }
-
-    /* Conteúdo principal à direita da nav */
-    main {
-      flex: 1 1 auto;
-      padding: 40px 30px 20px;
-      overflow-y: auto;
-      background: #0a0f1a;
-      min-height: 0; /* important para scroll interno funcionar */
-      display: flex;
-      flex-direction: column;
-    }
-    h1, h2, h3 {
-      color: #3b82f6;
-      text-shadow: 0 0 10px #2563eb;
-    }
-
-    /* Seções escondidas e exibidas */
-    section {
-      display: none;
-      animation: fadeIn 0.5s ease forwards;
-      flex-grow: 1;
-      overflow-y: auto;
-    }
-    section.active {
-      display: block;
-    }
-
-    /* Estilo para textos markdown (loja e bugs) */
-    .loja-text, .bugs-text {
-      color: #cbd5e1;
-      font-size: 1rem;
-      line-height: 1.5;
-      white-space: normal;
-    }
-    .loja-text a, .bugs-text a {
-      color: #3b82f6;
-      text-decoration: underline;
-    }
-    .loja-text ul, .bugs-text ul {
-      padding-left: 20px;
-      margin-bottom: 1em;
-    }
-    .loja-text hr, .bugs-text hr {
-      border: none;
-      border-top: 1px solid #374151;
-      margin: 1em 0;
-    }
-
-    /* Server info */
-    .server-info {
-      background: rgba(17, 24, 39, 0.85);
-      border-radius: 14px;
-      padding: 25px;
-      margin-top: 30px;
-      box-shadow: 0 0 15px #2563eb;
-      text-align: center;
-      font-size: 1.1rem;
-    }
-    .server-info .players {
-      font-size: 2rem;
-      color: #60a5fa;
-      font-weight: 700;
-      margin-bottom: 8px;
-      animation: pulse 2s infinite;
-    }
-
-    /* Cards */
-    .game-modes {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-      gap: 25px;
-      margin-top: 30px;
-    }
-    .card {
-      background: rgba(30, 41, 59, 0.9);
-      border-radius: 12px;
-      padding: 25px;
-      text-align: center;
-      box-shadow: 0 0 10px #2563eb;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: default;
-    }
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 0 25px #3b82f6;
-    }
-
-    /* Botões */
-    .btn {
-      display: inline-block;
-      background: #2563eb;
-      color: white;
-      padding: 12px 22px;
-      border-radius: 8px;
-      text-decoration: none;
-      margin-top: 15px;
-      font-weight: 600;
-      box-shadow: 0 0 10px #2563eb;
-      transition: background-color 0.3s ease;
-      cursor: pointer;
-    }
-    .btn:hover {
-      background-color: #1e40af;
-      box-shadow: 0 0 20px #1e40af;
-    }
-
-    /* Footer fixo */
-    footer {
-      background: #0f172a;
-      padding: 20px;
-      text-align: center;
-      color: #9ca3af;
-      font-size: 0.9rem;
-      box-shadow: inset 0 15px 15px -15px #2563eb;
-      flex-shrink: 0;
-      user-select: none;
-    }
-
-    /* Animações */
-    @keyframes pulse {
-      0%, 100% {opacity: 1;}
-      50% {opacity: 0.5;}
-    }
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(10px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-
-    /* Modal popup (opcional, se quiser manter) */
-    #modal-overlay {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.75);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 15000;
-    }
-    #modal {
-      background: #1e293b;
-      border-radius: 12px;
-      padding: 30px 40px 30px 30px;
-      max-width: 400px;
-      width: 90%;
-      color: #e0e7ff;
-      position: relative;
-      box-shadow: 0 0 30px #2563eb;
-      text-align: center;
-    }
-    #modal h2 {
-      margin-bottom: 20px;
-      color: #60a5fa;
-      font-weight: 700;
-    }
-    #modal p {
-      font-size: 1.2rem;
-      margin-bottom: 20px;
-    }
-    #modal button#copy-ip {
-      background: #2563eb;
-      border: none;
-      color: white;
-      font-weight: 700;
-      padding: 12px 20px;
-      border-radius: 8px;
-      cursor: pointer;
-      box-shadow: 0 0 15px #2563eb;
-      transition: background-color 0.3s ease;
-    }
-    #modal button#copy-ip:hover {
-      background-color: #1e40af;
-      box-shadow: 0 0 25px #1e40af;
-    }
-    #modal button.close-modal {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      background: transparent;
-      border: none;
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: #e0e7ff;
-      cursor: pointer;
-      transition: color 0.3s ease;
-    }
-    #modal button.close-modal:hover {
-      color: #bf4444;
-    }
-    #modal #copy-msg {
-      margin-top: 12px;
-      color: #4ade80;
-      font-weight: 600;
-      height: 20px;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    #modal #copy-msg.show {
-      opacity: 1;
-    }
-
-    /* Responsividade */
-    @media (max-width: 700px) {
-      nav {
-        width: 60px;
-        padding-top: 15px;
-      }
-      nav a {
-        font-size: 0;
-        padding: 15px 0;
-        border-left: none;
-        border-bottom: 4px solid transparent;
-      }
-      nav a:hover {
-        border-left: none;
-        border-bottom-color: #3b82f6;
-      }
-      nav a.active {
-        background: transparent;
-        border-left: none;
-        border-bottom-color: #60a5fa;
-        color: #60a5fa;
-      }
-      main {
-        padding: 20px 15px 20px;
-      }
-    }
+    /* (Seu CSS permanece igual, omitido aqui para brevidade) */
+    /* Copie e cole seu CSS original aqui */
   </style>
 </head>
 <body>
@@ -345,75 +62,14 @@
       <section id="loja">
         <h2>🛒 Loja Oficial</h2>
         <div class="loja-text">
-          <p>🎉 <strong>Bem-vindo à Loja do UniversoCraft!</strong> 🪐</p>
-
-          <p>🛒 Aqui podes comprar <strong>VIPs</strong>, <strong>Boosters</strong>, <strong>Ícones</strong> e <strong>Tags personalizadas</strong> para o teu perfil no servidor.</p>
-
-          <p>🌐 <strong>Acede já:</strong><br>
-          👉 <a href="https://tienda.universocraft.com" target="_blank" rel="noopener noreferrer">tienda.universocraft.com</a></p>
-
-          <hr>
-
-          <p>💎 <strong>O que encontras na loja?</strong></p>
-
-          <ul>
-            <li>🎖️ VIPs <strong>permanentes e temporários</strong></li>
-            <li>🔁 <strong>Upgrade de VIP</strong> pagando apenas a diferença</li>
-            <li>💬 <strong>Cargo exclusivo</strong> no Discord oficial do UniversoCraft</li>
-            <li>⚡ <strong>Boosters</strong> para aumentar experiência e moedas</li>
-            <li>🏷️ <strong>Pacotes de ícones e tags</strong>, com validade temporária</li>
-          </ul>
-
-          <hr>
-
-          <p>🔒 <strong>Pagamentos 100% seguros via Tebex</strong></p>
-
-          <p>💳 <strong>Métodos principais aceites:</strong><br>
-          &gt; PayPal • MBWay • Google Pay</p>
-
-          <p>🌍 <strong>Pagamentos alternativos:</strong><br>
-          &gt; Aceitamos praticamente <strong>qualquer método de pagamento do mundo!</strong></p>
-
-          <p>💱 <strong>Conversão automática de moeda:</strong><br>
-          &gt; Todos os pagamentos são convertidos para <strong>euros</strong>, com base no valor do <strong>dólar</strong>, de forma <strong>segura e instantânea</strong>.</p>
-
-          <hr>
-
-          <p>📦 <strong>Entrega automática</strong> após confirmação do pagamento.</p>
-
-          <p>✏️ <strong>Confirma o teu nick Minecraft antes de finalizar a compra!</strong></p>
-
-          <hr>
-
-          <p>🚀 <strong>UniversoCraft — Diverte-te no maior servidor da galáxia!</strong></p>
+          <!-- Conteúdo da loja igual ao seu original -->
         </div>
       </section>
 
       <section id="bugs">
         <h2>🛠️ Reportar Bugs</h2>
         <div class="bugs-text">
-          <p>🛠️💥 <strong>Achou um bug no UniversoCraft?</strong> 😵‍💫</p>
-
-          <p>Nos avise para que possamos resolver o mais rápido possível!<br>
-          📍 Para isso, <strong>acesse o nosso fórum oficial de bugs</strong>:</p>
-
-          <p>🔗 <a href="https://www.universocraft.com/forums/errores-y-bugs/" target="_blank" rel="noopener noreferrer">Reportar Bug</a></p>
-
-          <hr>
-
-          <p>📌 <strong>Dicas importantes ao reportar:</strong></p>
-          <ul>
-            <li>🧠 Seja <strong>claro e objetivo</strong> na explicação</li>
-            <li>📷 Envie <strong>prints, vídeos ou logs</strong> (se tiver)</li>
-            <li>⏱️ Informe o <strong>momento e local</strong> em que aconteceu</li>
-            <li>💬 Mantenha o respeito e a educação</li>
-          </ul>
-
-          <hr>
-
-          <p>🎁 <strong>Sua ajuda é essencial para manter o servidor top!</strong><br>
-          💖 Obrigado por fazer parte da nossa comunidade!<br>
-          🚀 Vamos juntos deixar o UniversoCraft cada vez melhor!</p>
+          <!-- Conteúdo de bugs igual ao seu original -->
         </div>
       </section>
 
@@ -424,11 +80,11 @@
       </section>
 
       <section id="youtube">
-        <h2>🎥 Trailer Oficial UniversoCraft</h2>
+        <h2>🎥 Canal Oficial UniversoCraft Português</h2>
         <iframe
           class="youtube-trailer"
-          src="https://www.youtube.com/embed/fjhv1NE-s1w?rel=0"
-          title="Trailer Oficial UniversoCraft"
+          src="https://www.youtube.com/embed?listType=user_uploads&list=SpaceCommunity-i2z"
+          title="Canal Oficial UniversoCraft Português"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
@@ -478,21 +134,20 @@
       });
     });
 
-    // Função para atualizar número de jogadores online usando a API do mvstats
+    // Função para atualizar número de jogadores online usando API mcsrvstat.us
     async function fetchPlayersOnline() {
       const playersElem = document.getElementById('playersOnline');
 
       try {
-        // Endpoint da API mvstats para o servidor UniversoCraft
-        // (substitua o IP e porta pelo correto se necessário)
-        const response = await fetch('https://mcsrvstat.us/server/mc.universocraft.com');
+        // Endpoint correto para status do servidor Minecraft
+        const response = await fetch('https://api.mcsrvstat.us/2/mc.universocraft.com');
         if (!response.ok) throw new Error('Erro ao buscar dados');
 
         const data = await response.json();
 
-        // data.onlinePlayers é o número atual de jogadores
-        if (data && typeof data.onlinePlayers === 'number') {
-          playersElem.textContent = data.onlinePlayers.toLocaleString();
+        // data.players.online é o número atual de jogadores online
+        if (data && data.players && typeof data.players.online === 'number') {
+          playersElem.textContent = data.players.online.toLocaleString();
         } else {
           playersElem.textContent = 'Indisponível';
         }

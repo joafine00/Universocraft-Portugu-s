@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login e Gerenciador de Chaves no localStorage</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f5f6fa;
+    }
+    #loginSection, #appSection {
+      max-width: 400px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #2d3436;
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+      color: #636e72;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 4px;
+      border: 1px solid #b2bec3;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px;
+      width: 100%;
+      background-color: #0984e3;
+      border: none;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    button:hover {
+      background-color: #74b9ff;
+    }
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+      margin-top: 20px;
+    }
+    li {
+      background: #dfe6e9;
+      margin-bottom: 8px;
+      padding: 10px;
+      border-radius: 5px;
+      word-break: break-word;
+    }
+    .key {
+      font-weight: bold;
+      color: #2d3436;
+    }
+    .value {
+      color: #636e72;
+      margin-left: 10px;
+    }
+    .error {
+      color: red;
+      margin-top: 10px;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Tela de login -->
+  <section id="loginSection">
+    <h2>Login</h2>
+    <label for="loginKey">Digite a chave mestre:</label>
+    <input type="text" id="loginKey" placeholder="Chave mestre..." />
+    <button id="loginBtn">Entrar</button>
+    <p id="loginError" class="error" style="display:none;">Chave inválida! Tente novamente.</p>
+  </section>
+
+  <!-- Tela principal -->
+  <section id="appSection" style="display:none;">
+    <h2>Gerenciador de Chaves</h2>
+    
+    <label for="newKeyName">Nome da chave:</label>
+    <input type="text" id="newKeyName" placeholder="ex: apiKey" />
+    
+    <label for="newKeyValue">Valor da chave:</label>
+    <input type="text" id="newKeyValue" placeholder="ex: 23Km0275np2admin07krycvzplotmyserversc" />
+    
+    <button id="addKeyBtn">Adicionar / Atualizar chave</button>
+
+    <h3>Chaves armazenadas:</h3>
+    <ul id="storageList"></ul>
+  </section>
+
+  <script>
+    const MASTER_KEY = "23Km0275np2admin07krycvzplotmyserversc";
+
+    const loginSection = document.getElementById('loginSection');
+    const appSection = document.getElementById('appSection');
+    const loginBtn = document.getElementById('loginBtn');
+    const loginKeyInput = document.getElementById('loginKey');
+    const loginError = document.getElementById('loginError');
+
+    const newKeyNameInput = document.getElementById('newKeyName');
+    const newKeyValueInput = document.getElementById('newKeyValue');
+    const addKeyBtn = document.getElementById('addKeyBtn');
+    const storageList = document.getElementById('storageList');
+
+    // Função para mostrar as chaves do localStorage
+    function listarLocalStorage() {
+      storageList.innerHTML = '';
+
+      if (localStorage.length === 0) {
+        storageList.innerHTML = '<li><em>Nenhuma chave armazenada.</em></li>';
+        return;
+      }
+
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        const value = localStorage.getItem(key);
+
+        const li = document.createElement('li');
+        li.innerHTML = `<span class="key">${key}:</span><span class="value">${value}</span>`;
+        storageList.appendChild(li);
+      }
+    }
+
+    // Evento do botão de login
+    loginBtn.addEventListener('click', () => {
+      const enteredKey = loginKeyInput.value.trim();
+
+      if (enteredKey === MASTER_KEY) {
+        loginSection.style.display = 'none';
+        appSection.style.display = 'block';
+        listarLocalStorage();
+        loginError.style.display = 'none';
+      } else {
+        loginError.style.display = 'block';
+      }
+    });
+
+    // Evento para adicionar nova chave
+    addKeyBtn.addEventListener('click', () => {
+      const key = newKeyNameInput.value.trim();
+      const value = newKeyValueInput.value.trim();
+
+      if (!key) {
+        alert("Por favor, insira um nome válido para a chave.");
+        return;
+      }
+
+      localStorage.setItem(key, value);
+      listarLocalStorage();
+
+      newKeyNameInput.value = '';
+      newKeyValueInput.value = '';
+    });
+  </script>
+
+</body>
+</html>

@@ -18,108 +18,92 @@
       color: #e0e7ff;
       min-height: 100vh;
       display: flex;
-      overflow-x: hidden;
-    }
-    /* Barra lateral esquerda */
-    nav {
-      background: rgba(15, 23, 42, 0.95);
-      width: 220px;
-      display: flex;
       flex-direction: column;
-      gap: 20px;
-      padding: 40px 20px;
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      box-shadow: 2px 0 15px rgba(37, 99, 235, 0.7);
-      z-index: 9998;
-    }
-    nav a {
-      color: #93c5fd;
-      font-weight: 600;
-      text-decoration: none;
-      font-size: 1.1rem;
-      transition: color 0.3s ease, text-shadow 0.3s ease;
-      padding: 12px 15px;
-      border-radius: 8px;
-      user-select: none;
-    }
-    nav a:hover, nav a.active {
-      color: #3b82f6;
-      text-shadow: 0 0 10px #2563eb;
-      background: rgba(37, 99, 235, 0.15);
-    }
-    /* Conteúdo principal */
-    main {
-      flex-grow: 1;
-      max-width: 900px;
-      margin: 20px;
-      padding: 0 20px 40px;
+      align-items: center;
+      padding: 20px;
     }
     header {
-      padding: 40px 0 30px 0;
       text-align: center;
-      background: linear-gradient(135deg, #0a0f1a 0%, #1e293b 100%);
-      box-shadow: inset 0 0 60px #2563eb;
-      margin-bottom: 20px;
-      border-radius: 12px;
+      margin-bottom: 30px;
+      user-select: none;
     }
     header h1 {
       font-size: 3rem;
       color: #3b82f6;
       text-shadow: 0 0 20px #2563eb;
       margin-bottom: 8px;
-      user-select: none;
     }
     header p {
       font-size: 1.2rem;
       color: #cbd5e1;
+    }
+    /* Container das abas */
+    .tabs {
+      width: 100%;
+      max-width: 1000px;
+      background: rgba(15, 23, 42, 0.95);
+      border-radius: 12px;
+      box-shadow: 0 0 20px #2563eb;
+      overflow: hidden;
+    }
+    /* Header das abas (botoes) */
+    .tab-buttons {
+      display: flex;
+      background: #1e293b;
       user-select: none;
     }
-    section {
-      display: none;
-      animation: fadeIn 0.5s ease forwards;
-    }
-    section.active {
-      display: block;
-    }
-    .server-info {
-      background: rgba(17, 24, 39, 0.85);
-      border-radius: 14px;
-      padding: 25px;
-      margin-top: 30px;
-      box-shadow: 0 0 15px #2563eb;
-      text-align: center;
+    .tab-buttons button {
+      flex-grow: 1;
+      background: #1e293b;
+      color: #93c5fd;
+      font-weight: 600;
+      padding: 15px 0;
+      border: none;
+      cursor: pointer;
       font-size: 1.1rem;
-      user-select: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      border-bottom: 3px solid transparent;
     }
-    .server-info .players {
-      font-size: 2rem;
-      color: #60a5fa;
-      font-weight: 700;
-      margin-bottom: 8px;
-      animation: pulse 2s infinite;
+    .tab-buttons button:hover {
+      background-color: #2563eb;
+      color: #e0e7ff;
     }
-    .game-modes {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-      gap: 25px;
-      margin-top: 30px;
+    .tab-buttons button.active {
+      background-color: #2563eb;
+      color: #e0e7ff;
+      border-bottom: 3px solid #60a5fa;
     }
+    /* Conteúdo das abas */
+    .tab-content {
+      padding: 25px 30px;
+      color: #e0e7ff;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.4s ease forwards;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(15px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    /* Cards */
     .card {
       background: rgba(30, 41, 59, 0.9);
       border-radius: 12px;
       padding: 25px;
-      text-align: center;
+      margin-bottom: 20px;
       box-shadow: 0 0 10px #2563eb;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: default;
       user-select: text;
     }
     .card:hover {
-      transform: translateY(-8px);
+      transform: translateY(-6px);
       box-shadow: 0 0 25px #3b82f6;
     }
+    /* Botões */
     .btn {
       display: inline-block;
       background: #2563eb;
@@ -139,26 +123,7 @@
       background-color: #1e40af;
       box-shadow: 0 0 20px #1e40af;
     }
-    footer {
-      background: #0f172a;
-      padding: 25px 20px;
-      text-align: center;
-      color: #9ca3af;
-      font-size: 0.9rem;
-      box-shadow: inset 0 15px 15px -15px #2563eb;
-      user-select: none;
-      margin-top: auto;
-    }
-    /* animação para pulse */
-    @keyframes pulse {
-      0%, 100% {opacity: 1;}
-      50% {opacity: 0.5;}
-    }
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(10px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-    /* Inputs dentro dos cards */
+    /* Inputs */
     input[type="text"] {
       padding: 10px;
       border-radius: 8px;
@@ -175,63 +140,95 @@
       outline: none;
       box-shadow: 0 0 20px #3b82f6 inset;
     }
+    /* Lista para loja e bugs */
+    ul {
+      margin-left: 20px;
+      list-style-type: disc;
+    }
+    /* Server Info box */
+    .server-info {
+      background: rgba(17, 24, 39, 0.85);
+      border-radius: 14px;
+      padding: 25px;
+      margin-top: 20px;
+      box-shadow: 0 0 15px #2563eb;
+      text-align: center;
+      font-size: 1.1rem;
+      user-select: none;
+    }
+    .server-info .players {
+      font-size: 2rem;
+      color: #60a5fa;
+      font-weight: 700;
+      margin-bottom: 8px;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% {opacity: 1;}
+      50% {opacity: 0.5;}
+    }
+    /* Responsivo */
+    @media(max-width: 600px) {
+      .tab-buttons button {
+        font-size: 0.9rem;
+        padding: 12px 0;
+      }
+      input[type="text"] {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <nav>
-    <a href="#inicio" class="active" onclick="showPage(event, 'inicio')">Início</a>
-    <a href="#servidor" onclick="showPage(event, 'servidor')">Servidor</a>
-    <a href="#loja" onclick="showPage(event, 'loja')">Loja</a>
-    <a href="#bugs" onclick="showPage(event, 'bugs')">Bugs</a>
-    <a href="#discord" onclick="showPage(event, 'discord')">Discord</a>
-    <a href="#youtube" onclick="showPage(event, 'youtube')">YouTube</a>
-  </nav>
+  <header>
+    <h1>🌌 UniversoCraft Português</h1>
+    <p>O maior servidor da galáxia — IP: <strong>mc.universocraft.com</strong></p>
+  </header>
 
-  <main>
-    <header>
-      <h1>🌌 UniversoCraft Português</h1>
-      <p>O maior servidor da galáxia — IP: <strong>mc.universocraft.com</strong></p>
-    </header>
+  <div class="tabs">
+    <div class="tab-buttons">
+      <button class="active" onclick="openTab(event, 'inicio')">Início</button>
+      <button onclick="openTab(event, 'servidor')">Servidor</button>
+      <button onclick="openTab(event, 'loja')">Loja</button>
+      <button onclick="openTab(event, 'bugs')">Bugs</button>
+      <button onclick="openTab(event, 'discord')">Discord</button>
+      <button onclick="openTab(event, 'youtube')">YouTube</button>
+      <button onclick="openTab(event, 'estatisticas')">Estatísticas</button>
+    </div>
 
-    <section id="inicio" class="active">
+    <div id="inicio" class="tab-content active">
       <h2>Bem-vindo ao UniversoCraft</h2>
       <p>
-        🌠 O UniversoCraft é uma comunidade gigantesca de Minecraft com <strong>46 minigames incríveis</strong>, eventos exclusivos, ranks e muito mais!
+        🌠 O UniversoCraft é uma comunidade gigante de Minecraft com <strong>46 minigames incríveis</strong>, eventos exclusivos, ranks e muito mais!
       </p>
       <div class="server-info">
         <div class="players" id="playersOnline">--</div>
         <div>Jogadores Online</div>
         <div>Versões Suportadas: 1.8 até 1.21</div>
       </div>
-    </section>
+    </div>
 
-    <section id="servidor">
+    <div id="servidor" class="tab-content">
       <h2>Modos de Jogo</h2>
-      <div class="game-modes">
-        <div class="card">
-          <h3>🎮 Mais de 46 minigames</h3>
-          <p>Minigames variados para todos os gostos e níveis.</p>
-        </div>
-        <div class="card">
-          <h3>🌍 Mundo em constante evolução</h3>
-          <p>Explore mapas únicos e participe em eventos exclusivos.</p>
-        </div>
-        <div class="card">
-          <h3>💎 Sistema VIP e Boosters</h3>
-          <p>Compre VIPs, boosters e itens exclusivos para melhorar sua experiência.</p>
-        </div>
-        <div class="card">
-          <h3>🔎 Estatísticas do Jogador</h3>
-          <input type="text" id="playerNick" placeholder="Digite seu nick Minecraft" />
-          <button onclick="openStats()" class="btn" style="margin-top: 15px;">Ver Estatísticas</button>
-        </div>
+      <div class="card">
+        <h3>🎮 Mais de 46 minigames</h3>
+        <p>Minigames variados para todos os gostos e níveis.</p>
       </div>
-    </section>
+      <div class="card">
+        <h3>🌍 Mundo em constante evolução</h3>
+        <p>Explore mapas únicos e participe em eventos exclusivos.</p>
+      </div>
+      <div class="card">
+        <h3>💎 Sistema VIP e Boosters</h3>
+        <p>Compre VIPs, boosters e itens exclusivos para melhorar sua experiência.</p>
+      </div>
+    </div>
 
-    <section id="loja">
+    <div id="loja" class="tab-content">
       <h2>🛒 Loja Oficial</h2>
-      <div class="card" style="text-align:left; white-space: normal; font-size: 1rem; line-height: 1.5;">
+      <div class="card" style="text-align:left;">
         <p>🎉 <strong>Bem-vindo à Loja do UniversoCraft!</strong> 🪐</p>
         <p>🛒 Aqui podes comprar <strong>VIPs</strong>, <strong>Boosters</strong>, <strong>Ícones</strong> e <strong>Tags personalizadas</strong> para o teu perfil no servidor.</p>
         <p>🌐 <strong>Acede já:</strong> <a href="https://tienda.universocraft.com" target="_blank" style="color:#60a5fa; text-decoration:underline;">tienda.universocraft.com</a></p>
@@ -255,11 +252,11 @@
         <hr style="border-color: #2563eb;" />
         <p>🚀 <strong>UniversoCraft — Diverte-te no maior servidor da galáxia!</strong></p>
       </div>
-    </section>
+    </div>
 
-    <section id="bugs">
+    <div id="bugs" class="tab-content">
       <h2>🛠️ Reportar Bugs</h2>
-      <div class="card" style="text-align:left; white-space: normal; font-size: 1rem; line-height: 1.5;">
+      <div class="card" style="text-align:left;">
         <p>🛠️💥 <strong>Achou um bug no UniversoCraft?</strong> 😵‍💫</p>
         <p>Nos avise para que possamos resolver o mais rápido possível!<br>
         📍 Para isso, <strong>acesse o nosso fórum oficial de bugs</strong>:</p>
@@ -275,37 +272,48 @@
         <hr style="border-color: #2563eb;" />
         <p>🎁 <strong>Sua ajuda é essencial para manter o servidor top!</strong><br>💖 Obrigado por fazer parte da nossa comunidade!<br>🚀 Vamos juntos deixar o UniversoCraft cada vez melhor!</p>
       </div>
-    </section>
+    </div>
 
-    <section id="discord">
+    <div id="discord" class="tab-content">
       <h2>💬 Comunidade no Discord</h2>
       <p>Junta-te ao nosso servidor oficial em português criado em Portugal:</p>
       <p><a href="https://dsc.gg/universocraft-portugues" target="_blank" class="btn">Entrar no Discord UniversoCraft Português</a></p>
-    </section>
+    </div>
 
-    <section id="youtube">
+    <div id="youtube" class="tab-content">
       <h2>🎥 Canal Oficial UniversoCraft</h2>
       <p>Visite o canal oficial da comunidade no YouTube:</p>
       <p><a href="https://www.youtube.com/channel/UCfNm0fVgsNCaZsGagL9X_aw" target="_blank" class="btn">Canal YouTube UniversoCraft</a></p>
-    </section>
-  </main>
+    </div>
 
-  <footer>
+    <div id="estatisticas" class="tab-content">
+      <h2>📊 Estatísticas do Jogador</h2>
+      <p>Digite seu nick Minecraft para ver suas estatísticas no UniversoCraft:</p>
+      <input type="text" id="playerNick" placeholder="Digite seu nick Minecraft" />
+      <button onclick="openStats()" class="btn">Ver Estatísticas</button>
+    </div>
+  </div>
+
+  <footer style="margin-top:30px; user-select:none; color:#9ca3af; text-align:center; font-size:0.9rem;">
     © 2025 UniversoCraft Português — Site criado em Portugal por fãs.
   </footer>
 
   <script>
-    // Função para mostrar aba
-    function showPage(e, id) {
-      e.preventDefault();
-      document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-      e.target.classList.add('active');
-      document.querySelectorAll('main section').forEach(s => s.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
+    // Função para mudar abas
+    function openTab(evt, tabName) {
+      const tabContents = document.querySelectorAll('.tab-content');
+      tabContents.forEach(content => content.classList.remove('active'));
+
+      const tabButtons = document.querySelectorAll('.tab-buttons button');
+      tabButtons.forEach(btn => btn.classList.remove('active'));
+
+      document.getElementById(tabName).classList.add('active');
+      evt.currentTarget.classList.add('active');
+
       window.scrollTo(0, 0);
     }
 
-    // Atualiza o número de jogadores online a cada 5 segundos usando a API mcsrvstat.us
+    // Atualiza número de jogadores online via API mcsrvstat.us a cada 5s
     async function updatePlayersOnline() {
       try {
         const response = await fetch("https://api.mcsrvstat.us/2/mc.universocraft.com");
@@ -323,10 +331,10 @@
     updatePlayersOnline();
     setInterval(updatePlayersOnline, 5000);
 
-    // Abre as estatísticas do jogador numa nova aba
+    // Abre a página de estatísticas numa nova aba
     function openStats() {
       const nick = document.getElementById('playerNick').value.trim();
-      if(!nick) {
+      if (!nick) {
         alert('Por favor, insira seu nick Minecraft.');
         return;
       }

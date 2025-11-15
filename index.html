@@ -21,6 +21,7 @@
       flex-direction: column;
       align-items: center;
       padding: 20px;
+      position: relative;
     }
     header {
       text-align: center;
@@ -36,6 +37,8 @@
     header p {
       font-size: 1.2rem;
       color: #cbd5e1;
+      font-weight: 600;
+      margin-bottom: 0;
     }
     /* Container das abas */
     .tabs {
@@ -78,7 +81,7 @@
       padding: 25px 30px;
       color: #e0e7ff;
       font-size: 1.1rem;
-      line-height: 1.6;
+      line-height: 1.8;
       display: none;
     }
     .tab-content.active {
@@ -167,6 +170,33 @@
       0%, 100% {opacity: 1;}
       50% {opacity: 0.5;}
     }
+    /* IP flutuante no canto inferior direito */
+    #ipCopyBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      padding: 10px 18px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 0 15px #3b82f6;
+      animation: jump 2.5s ease-in-out infinite;
+      user-select: none;
+      z-index: 1000;
+      transition: background-color 0.3s ease;
+    }
+    #ipCopyBtn:hover {
+      background-color: #2563eb;
+      box-shadow: 0 0 25px #2563eb;
+    }
+    @keyframes jump {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
     /* Responsivo */
     @media(max-width: 600px) {
       .tab-buttons button {
@@ -177,6 +207,12 @@
         width: 100%;
         margin-bottom: 10px;
       }
+      #ipCopyBtn {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+        bottom: 15px;
+        right: 15px;
+      }
     }
   </style>
 </head>
@@ -184,7 +220,7 @@
 
   <header>
     <h1>🌌 UniversoCraft Português</h1>
-    <p>O maior servidor da galáxia — IP: <strong>mc.universocraft.com</strong></p>
+    <p>Maior servidor da galáxia</p>
   </header>
 
   <div class="tabs">
@@ -228,11 +264,14 @@
 
     <div id="loja" class="tab-content">
       <h2>🛒 Loja Oficial</h2>
-      <div class="card" style="text-align:left;">
+      <div class="card" style="text-align:left; line-height: 1.8;">
         <p>🎉 <strong>Bem-vindo à Loja do UniversoCraft!</strong> 🪐</p>
         <p>🛒 Aqui podes comprar <strong>VIPs</strong>, <strong>Boosters</strong>, <strong>Ícones</strong> e <strong>Tags personalizadas</strong> para o teu perfil no servidor.</p>
+
         <p>🌐 <strong>Acede já:</strong> <a href="https://tienda.universocraft.com" target="_blank" style="color:#60a5fa; text-decoration:underline;">tienda.universocraft.com</a></p>
+
         <hr style="border-color: #2563eb;" />
+
         <p>💎 <strong>O que encontras na loja?</strong></p>
         <ul>
           <li>🎖️ VIPs <strong>permanentes e temporários</strong></li>
@@ -241,35 +280,52 @@
           <li>⚡ <strong>Boosters</strong> para aumentar experiência e moedas</li>
           <li>🏷️ <strong>Pacotes de ícones e tags</strong>, com validade temporária</li>
         </ul>
+
         <hr style="border-color: #2563eb;" />
+
         <p>🔒 <strong>Pagamentos 100% seguros via Tebex</strong></p>
+
         <p>💳 <strong>Métodos principais aceites:</strong><br> PayPal • MBWay • Google Pay</p>
+
         <p>🌍 <strong>Pagamentos alternativos:</strong><br> Aceitamos praticamente <strong>qualquer método de pagamento do mundo!</strong></p>
+
         <p>💱 <strong>Conversão automática de moeda:</strong><br> Todos os pagamentos são convertidos para <strong>euros</strong>, com base no valor do <strong>dólar</strong>, de forma <strong>segura e instantânea</strong>.</p>
+
         <hr style="border-color: #2563eb;" />
+
         <p>📦 <strong>Entrega automática</strong> após confirmação do pagamento.</p>
+
         <p>✏️ <strong>Confirma o teu nick Minecraft antes de finalizar a compra!</strong></p>
+
         <hr style="border-color: #2563eb;" />
+
         <p>🚀 <strong>UniversoCraft — Diverte-te no maior servidor da galáxia!</strong></p>
       </div>
     </div>
 
     <div id="bugs" class="tab-content">
       <h2>🛠️ Reportar Bugs</h2>
-      <div class="card" style="text-align:left;">
+      <div class="card" style="text-align:left; line-height: 1.8;">
         <p>🛠️💥 <strong>Achou um bug no UniversoCraft?</strong> 😵‍💫</p>
+
         <p>Nos avise para que possamos resolver o mais rápido possível!<br>
         📍 Para isso, <strong>acesse o nosso fórum oficial de bugs</strong>:</p>
+
         <p>🔗 <a href="https://www.universocraft.com/forums/errores-y-bugs/" target="_blank" style="color:#60a5fa; text-decoration:underline;">Reportar Bug</a></p>
+
         <hr style="border-color: #2563eb;" />
+
         <p>📌 <strong>Dicas importantes ao reportar:</strong></p>
+
         <ul>
           <li>🧠 Seja <strong>claro e objetivo</strong> na explicação</li>
           <li>📷 Envie <strong>prints, vídeos ou logs</strong> (se tiver)</li>
           <li>⏱️ Informe o <strong>momento e local</strong> em que aconteceu</li>
           <li>💬 Mantenha o respeito e a educação</li>
         </ul>
+
         <hr style="border-color: #2563eb;" />
+
         <p>🎁 <strong>Sua ajuda é essencial para manter o servidor top!</strong><br>💖 Obrigado por fazer parte da nossa comunidade!<br>🚀 Vamos juntos deixar o UniversoCraft cada vez melhor!</p>
       </div>
     </div>
@@ -293,6 +349,9 @@
       <button onclick="openStats()" class="btn">Ver Estatísticas</button>
     </div>
   </div>
+
+  <!-- Botão flutuante IP -->
+  <button id="ipCopyBtn" title="Clique para copiar IP">mc.universocraft.com</button>
 
   <footer style="margin-top:30px; user-select:none; color:#9ca3af; text-align:center; font-size:0.9rem;">
     © 2025 UniversoCraft Português — Site criado em Portugal por fãs.
@@ -331,6 +390,16 @@
     updatePlayersOnline();
     setInterval(updatePlayersOnline, 5000);
 
+    // Copiar IP ao clicar no botão flutuante
+    const ipBtn = document.getElementById('ipCopyBtn');
+    ipBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText('mc.universocraft.com').then(() => {
+        alert('IP mc.universocraft.com copiado para a área de transferência!');
+      }).catch(() => {
+        alert('Não foi possível copiar o IP, tente manualmente.');
+      });
+    });
+
     // Abre a página de estatísticas numa nova aba
     function openStats() {
       const nick = document.getElementById('playerNick').value.trim();
@@ -338,9 +407,10 @@
         alert('Por favor, insira seu nick Minecraft.');
         return;
       }
-      const url = `https://stats.universocraft.com/jugador/${encodeURIComponent(nick)}`;
+      const url = `https://universocraft.com/stats?player=${encodeURIComponent(nick)}`;
       window.open(url, '_blank');
     }
   </script>
+
 </body>
 </html>

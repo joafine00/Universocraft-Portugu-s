@@ -6,7 +6,6 @@
   <title>UniversoCraft Português</title>
   <link rel="icon" type="image/png" href="logo.png" />
   <style>
-/* --- TODO O TEU CSS ORIGINAL AQUI --- (NÃO FOI ALTERADO) */
 * {
       margin: 0;
       padding: 0;
@@ -21,16 +20,12 @@
       display: flex;
       flex-direction: column;
     }
-    body {
-      height: 100vh;
-    }
 
     .container {
-      flex: 1 1 auto;
+      flex: 1;
       display: flex;
       height: 100%;
       overflow: hidden;
-      box-shadow: inset 0 0 100px #1e40af33;
     }
 
     nav {
@@ -40,96 +35,49 @@
       flex-direction: column;
       padding-top: 30px;
       box-shadow: 2px 0 15px rgba(37, 99, 235, 0.6);
-      position: relative;
-      z-index: 1000;
       border-right: 1px solid #1e40af44;
-      transition: background-color 0.3s ease;
     }
+
     nav a {
       color: #93c5fd;
       text-decoration: none;
       font-weight: 600;
       font-size: 1.15rem;
       padding: 18px 30px;
-      border-left: 4px solid transparent;
-      transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
-      cursor: pointer;
-      user-select: none;
-      letter-spacing: 0.03em;
-      border-radius: 0 10px 10px 0;
       margin: 0 10px 8px 10px;
+      border-radius: 0 10px 10px 0;
+      transition: 0.3s;
+      cursor: pointer;
     }
+
     nav a:hover {
       background: #1e40af;
-      border-left-color: #3b82f6;
-      color: #bfdbfe;
-      box-shadow: 0 0 8px #3b82f6aa;
+      color: white;
     }
+
     nav a.active {
       background: #2563eb;
-      border-left-color: #60a5fa;
       color: white;
-      box-shadow: 0 0 12px #60a5faaa;
       font-weight: 700;
     }
 
     main {
-      flex: 1 1 auto;
-      padding: 40px 40px 30px 40px;
+      flex: 1;
+      padding: 40px;
       overflow-y: auto;
-      background: #0a0f1a;
-      min-height: 0;
-      display: flex;
-      flex-direction: column;
-      scrollbar-width: thin;
-      scrollbar-color: #2563eb transparent;
-    }
-    main::-webkit-scrollbar {
-      width: 8px;
-    }
-    main::-webkit-scrollbar-track {
-      background: transparent;
-    }
-    main::-webkit-scrollbar-thumb {
-      background-color: #2563eb;
-      border-radius: 10px;
-    }
-    h1, h2, h3 {
-      color: #3b82f6;
-      text-shadow: 0 0 12px #2563eb;
-      margin-bottom: 20px;
-      font-weight: 700;
-    }
-    p {
-      font-size: 1.05rem;
-      line-height: 1.6;
-      margin-bottom: 18px;
-      color: #cbd5e1;
     }
 
     section {
       display: none;
-      animation: fadeIn 0.4s ease forwards;
-      flex-grow: 1;
-      overflow-y: auto;
     }
+
     section.active {
       display: block;
     }
 
     .loja-text, .bugs-text {
       color: #cbd5e1;
-      font-size: 1rem;
       line-height: 1.6;
-      white-space: normal;
-    }
-
-    iframe {
-      width: 100%;
-      height: 700px;
-      border: none;
-      border-radius: 12px;
-      box-shadow: 0 0 25px #1e40af88;
     }
   </style>
 </head>
@@ -149,16 +97,9 @@
 
     <main>
 
-      <!-- TODAS AS SECÇÕES ORIGINAIS FORAM MANTIDAS -->
-      <!-- NADA FOI APAGADO -->
-
       <section id="inicio" class="active">
         <h1>🌌 UniversoCraft Português</h1>
         <p>O maior servidor da galáxia</p>
-
-        <div class="server-info">
-          <div>Bem-Vindo Ao UniversoCraft Português</div>
-        </div>
       </section>
 
       <section id="conecte-se">
@@ -166,163 +107,104 @@
         <p>Para jogar, conecte-se ao servidor usando o IP abaixo:</p>
         <button id="copy-ip-page" class="btn">mc.universocraft.com</button>
         <p>Versões Suportadas: 1.8 até 1.21</p>
-        <div id="copy-msg-page" style="margin-top: 10px; color: #4ade80; font-weight: 600; min-height: 20px;"></div>
+        <div id="copy-msg-page" style="margin-top: 10px; color: #4ade80; font-weight: 600;"></div>
       </section>
 
       <section id="servidor">
         <h2>Modos de Jogo</h2>
-        <div class="game-modes">
-          <div class="card">
-            <h3>🎮 Mais de 40 a 60 minigames</h3>
-            <p>Minigames variados para todos os gostos e níveis.</p>
-          </div>
-          <div class="card">
-            <h3>🌍 Mundo em constante evolução</h3>
-            <p>Explore mapas únicos e participe em eventos exclusivos.</p>
-          </div>
-          <div class="card">
-            <h3>💎 Sistema VIP e Boosters</h3>
-            <p>Compre VIPs, boosters e itens exclusivos para melhorar sua experiência.</p>
-          </div>
-        </div>
+        <p>🎮 Mais de 40 a 60 minigames</p>
+        <p>🌍 Mundo em constante evolução</p>
+        <p>💎 Sistema VIP e Boosters</p>
       </section>
 
       <section id="loja">
-        <!-- TODA A TUA LOJA ORIGINAL FOI MANTIDA -->
         <h2>🛒 Loja Oficial</h2>
         <div class="loja-text">
-          <!-- CONTEÚDO ORIGINAL COMPLETO -->
-          🎉 **Bem-vindo à Loja do UniversoCraft!** 🪐
+🎉 **Bem-vindo à Loja do UniversoCraft!** 🪐
 
 🛒 Aqui podes comprar **VIPs**, **Boosters**, **Ícones** e **Tags personalizadas** para o teu perfil no servidor.
 
 🌐 **Acede já:**  
 👉 [tienda.universocraft.com](https://tienda.universocraft.com)
 
----
-
 💎 **O que encontras na loja?**
 
 - 🎖️ VIPs **permanentes e temporários**  
 - 🔁 **Upgrade de VIP** pagando apenas a diferença  
-- 💬 **Cargo exclusivo** no Discord oficial do UniversoCraft  
-- ⚡ **Boosters** para aumentar experiência e moedas  
-- 🏷️ **Pacotes de ícones e tags**, com validade temporária  
+- 💬 **Cargo exclusivo** no Discord  
+- ⚡ **Boosters**  
+- 🏷️ **Ícones e tags**  
 
----
-
-🔒 **Pagamentos 100% seguros via Tebex**
-
-💳 **Métodos principais aceites:**  
-> PayPal • MBWay • Google Pay  
-
-🌍 **Pagamentos alternativos:**  
-> Aceitamos praticamente **qualquer método de pagamento do mundo!**
-
-💱 **Conversão automática de moeda:**  
-> Todos os pagamentos são convertidos para **euros**, com base no valor do **dólar**, de forma **segura e instantânea**.  
-
----
-
-📦 **Entrega automática** após confirmação do pagamento.  
-
-✏️ **Confirma o teu nick Minecraft antes de finalizar a compra!**
-
----
-
-🚀 **UniversoCraft — Diverte-te no maior servidor da galáxia!**
+💳 Pagamentos aceites: PayPal • MBWay • Google Pay  
+🔒 Entrega automática após compra.
         </div>
       </section>
 
       <section id="bugs">
         <h2>🛠️ Reportar Bugs</h2>
         <div class="bugs-text">
-        🛠️💥 **Achou um bug no UniversoCraft?** 😵‍💫
-
-Nos avise para que possamos resolver o mais rápido possível!  
-📍 Para isso, **acesse o nosso fórum oficial de bugs**:
-
-🔗 **[Reportar Bug](https://www.universocraft.com/forums/errores-y-bugs/)**
-
----
-
-📌 **Dicas importantes ao reportar:**
-- 🧠 Seja **claro e objetivo** na explicação
-- 📷 Envie **prints, vídeos ou logs** (se tiver)
-- ⏱️ Informe o **momento e local** em que aconteceu
-- 💬 Mantenha o respeito e a educação
-
----
-
-🎁 **Sua ajuda é essencial para manter o servidor top!**  
-💖 Obrigado por fazer parte da nossa comunidade!  
-🚀 Vamos juntos deixar o UniversoCraft cada vez melhor!
+🛠️💥 Achou um bug?  
+Reporte aqui:  
+👉 https://www.universocraft.com/forums/errores-y-bugs/
         </div>
       </section>
 
       <section id="discord">
         <h2>Discord Oficial</h2>
-        <p>Entre no nosso Discord para conversar, tirar dúvidas e participar de eventos:</p>
-        <a href="https://dsc.gg/universocraft-portugues" target="_blank" class="btn">Entrar no Discord</a>
+        <a href="https://dsc.gg/universocraft-portugues" target="_blank">Entrar no Discord</a>
       </section>
 
       <section id="youtube">
         <h2>Canal Oficial no YouTube</h2>
-        <p>Confira nossos vídeos, tutoriais e eventos no YouTube:</p>
-        <a href="https://www.youtube.com/@UniversoCraft-portugues" target="_blank" class="btn">Visitar YouTube</a>
+        <a href="https://www.youtube.com/@UniversoCraft-portugues" target="_blank">Visitar YouTube</a>
       </section>
 
-      <!-- 🔥 SECÇÃO ESTATÍSTICAS CORRIGIDA E FORA DO YOUTUBE -->
+      <!-- ⭐ ESTATÍSTICAS ABREM AGORA EM NOVA ABA -->
       <section id="estatisticas">
         <h2>📊 Estatísticas de Jogadores</h2>
-        <p>Insere o nick do jogador e vê o perfil diretamente aqui no site:</p>
+        <p>Insere o nick e abre numa nova aba:</p>
 
-        <input id="stats-nick" type="text" 
-               placeholder="Nick do jogador"
-               style="padding:12px;background:#1e293b;border:2px solid #2563eb;border-radius:10px;color:white;width:260px;margin-right:10px;">
+        <input id="stats-nick" type="text" placeholder="Nick do jogador"
+               style="padding:10px;border-radius:8px;border:2px solid #2563eb;background:#1e293b;color:white;">
 
-        <button id="open-stats" class="btn">Ver estatísticas</button>
+        <button id="open-stats" style="padding:10px 20px;background:#2563eb;border:none;color:white;border-radius:8px;">
+          Abrir em nova aba
+        </button>
+
         <p id="stats-error" style="color:#f87171;font-weight:600;"></p>
-
-        <iframe id="stats-frame" src=""></iframe>
       </section>
 
     </main>
   </div>
 
-  <footer>
-    Space Community &copy; 2025 — Todos os direitos reservados
-  </footer>
-
   <script>
-/* Navegação entre secções */
-const links = document.querySelectorAll('nav a');
-const sections = document.querySelectorAll('main section');
+/* Navegação */
+const links = document.querySelectorAll("nav a");
+const sections = document.querySelectorAll("section");
 
 links.forEach(link => {
-  link.addEventListener('click', e => {
+  link.addEventListener("click", (e) => {
     e.preventDefault();
     const target = link.dataset.target;
 
-    links.forEach(l => l.classList.remove('active'));
-    sections.forEach(s => s.classList.remove('active'));
+    links.forEach(l => l.classList.remove("active"));
+    sections.forEach(s => s.classList.remove("active"));
 
-    link.classList.add('active');
-    document.getElementById(target).classList.add('active');
+    link.classList.add("active");
+    document.getElementById(target).classList.add("active");
   });
 });
 
 /* Copiar IP */
-document.getElementById('copy-ip-page').onclick = () => {
+document.getElementById("copy-ip-page").onclick = () => {
   navigator.clipboard.writeText("mc.universocraft.com");
-  document.getElementById('copy-msg-page').textContent = "IP copiado!";
+  document.getElementById("copy-msg-page").textContent = "IP copiado!";
 };
 
-/* Estatísticas dentro do site */
+/* Estatísticas → Abrir nova aba */
 document.getElementById("open-stats").onclick = () => {
   const nick = document.getElementById("stats-nick").value.trim();
   const error = document.getElementById("stats-error");
-  const frame = document.getElementById("stats-frame");
 
   if (nick.length < 3) {
     error.textContent = "Nick inválido!";
@@ -330,7 +212,7 @@ document.getElementById("open-stats").onclick = () => {
     return;
   }
 
-  frame.src = "https://stats.universocraft.com/jugador/" + nick;
+  window.open("https://stats.universocraft.com/jugador/" + nick, "_blank");
 };
   </script>
 

@@ -363,6 +363,7 @@
       <a href="#" data-target="servidor">Servidor</a>
       <a href="#" data-target="loja">Loja</a>
       <a href="#" data-target="bugs">Bugs</a>
+      <a href="#" data-target="estatisticas">Estatísticas</a>
       <a href="#" data-target="discord">Discord</a>
       <a href="#" data-target="youtube">YouTube</a>
     </nav>
@@ -486,6 +487,33 @@
         <h2>Canal Oficial no YouTube</h2>
         <p>Confira nossos vídeos, tutoriais e eventos no YouTube:</p>
         <a href="https://www.youtube.com/@UniversoCraft-portugues" target="_blank" rel="noopener noreferrer" class="btn">Visitar YouTube</a>
+
+        <section id="estatisticas">
+  <h2>📊 Estatísticas de Jogadores</h2>
+  <p>Insere o nick do jogador para veres todas as estatísticas oficiais no UniversoCraft:</p>
+
+  <input 
+      type="text" 
+      id="stats-nick" 
+      placeholder="Nick do jogador"
+      style="
+        padding: 12px 16px;
+        background: #1e293b;
+        border: 2px solid #2563eb;
+        border-radius: 10px;
+        color: #e0e7ff;
+        font-size: 1.1rem;
+        width: 260px;
+        outline: none;
+        margin-right: 10px;
+      "
+  >
+
+  <button id="open-stats" class="btn">Ver estatísticas</button>
+
+  <p id="stats-error" style="color: #f87171; margin-top: 12px; font-weight: 600;"></p>
+</section>
+
       </section>
     </main>
   </div>
@@ -527,6 +555,27 @@
         setTimeout(() => { msgCopyIP.textContent = ''; }, 3500);
       });
     });
+
+
+    // Estatísticas - abrir perfil do jogador
+const statsBtn = document.getElementById('open-stats');
+const statsNick = document.getElementById('stats-nick');
+const statsError = document.getElementById('stats-error');
+
+statsBtn.addEventListener('click', () => {
+  const nick = statsNick.value.trim();
+
+  if (nick.length < 3) {
+    statsError.textContent = 'Nick inválido. Insere um nick com pelo menos 3 caracteres.';
+    setTimeout(() => statsError.textContent = "", 3000);
+    return;
+  }
+
+  // Abre o perfil do jogador no site oficial
+  const url = `https://stats.universocraft.com/player/${nick}`;
+  window.open(url, "_blank");
+});
+
   </script>
 </body>
 </html>

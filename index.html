@@ -49,7 +49,7 @@
       box-shadow: 0 0 20px #2563eb;
       overflow: hidden;
     }
-    /* Header das abas (botoes) */
+    /* Header das abas */
     .tab-buttons {
       display: flex;
       background: #1e293b;
@@ -143,12 +143,12 @@
       outline: none;
       box-shadow: 0 0 20px #3b82f6 inset;
     }
-    /* Lista para loja e bugs */
+    /* Lista */
     ul {
       margin-left: 20px;
       list-style-type: disc;
     }
-    /* Server Info box */
+    /* Server Info */
     .server-info {
       background: rgba(17, 24, 39, 0.85);
       border-radius: 14px;
@@ -170,7 +170,7 @@
       0%, 100% {opacity: 1;}
       50% {opacity: 0.5;}
     }
-    /* IP flutuante no canto inferior direito */
+    /* Botão flutuante IP */
     #ipCopyBtn {
       position: fixed;
       bottom: 20px;
@@ -224,9 +224,9 @@
   </header>
 
   <div class="tabs">
+
     <div class="tab-buttons">
       <button class="active" onclick="openTab(event, 'inicio')">Início</button>
-      <!-- NOVA ABA: Sobre -->
       <button onclick="openTab(event, 'sobre')">Sobre</button>
       <button onclick="openTab(event, 'servidor')">Servidor</button>
       <button onclick="openTab(event, 'loja')">Loja</button>
@@ -236,244 +236,166 @@
       <button onclick="openTab(event, 'estatisticas')">Estatísticas</button>
     </div>
 
-    <!-- NOVA SEÇÃO: SOBRE -->
+    <!-- SOBRE -->
     <div id="sobre" class="tab-content">
       <h2>ℹ️ Sobre a Versão em Português</h2>
 
       <div class="card" style="text-align:left; line-height:1.6;">
-        <p>Esta secção descreve a iniciativa da tradução e adaptação em Português (PT) do UniversoCraft, direcionada tanto para jogadores de <strong>Portugal (PT-PT)</strong> quanto para jogadores do <strong>Brasil (PT-BR)</strong>.</p>
+
+        <p>Esta secção apresenta informações sobre a tradução e adaptação em Português (PT) para jogadores de Portugal e Brasil.</p>
 
         <hr style="margin: 10px 0; border-color:#2563eb;">
 
-        <h3 style="color:#60a5fa; margin-bottom:8px;">Compatibilidade e Suporte</h3>
-        <div><strong>Versões suportadas do Minecraft:</strong> 1.8 até 1.21 (mesma informação presente na página inicial)</div>
-        <div><strong>Público-alvo:</strong> Jogadores falantes de Português — PT-PT e PT-BR.</div>
-        <div><strong>Notas de compatibilidade:</strong> A versão PT é pensada para ser compatível tanto com variantes europeias quanto latino-americanas da língua; não existem diferenças técnicas entre PT-BR e PT-PT no servidor, apenas pequenas preferências de vocabulário na interface quando aplicável.</div>
+        <h3 style="color:#60a5fa;">Compatibilidade e Suporte</h3>
+        <p><strong>Versões suportadas:</strong> 1.8 até 1.21</p>
+        <p><strong>Público-alvo:</strong> Jogadores falantes de Português</p>
 
         <hr style="margin: 10px 0; border-color:#2563eb;">
 
-        <h3 style="color:#60a5fa; margin-bottom:8px;">Equipe e Responsáveis</h3>
-        <div><strong>Responsável pela Dublagem PT e Tradução:</strong> Joafine</div>
-        <div><strong>Funções atribuídas:</strong> Dublagem completa do servidor, menus, traduções, adaptações culturais e melhorias linguísticas.</div>
-        <div><strong>Outras responsabilidades de Joafine:</strong> Modificações no site em PT, liderança da comunidade PT e criação/gestão de conteúdo PT.</div>
+        <h3 style="color:#60a5fa;">Criador da Tradução</h3>
+        <p><strong>Nome artístico:</strong> Joafine</p>
+        <p><strong>Funções:</strong> Tradução, dublagem, adaptação PT e conteúdos da comunidade</p>
+        <p><strong>Local de nascimento:</strong> (não confirmado)</p>
 
         <hr style="margin: 10px 0; border-color:#2563eb;">
 
-        <h3 style="color:#60a5fa; margin-bottom:8px;">Informações do Criador da Dublagem</h3>
-        <div><strong>Nome artístico:</strong> Joafine</div>
-        <div><strong>Nome real:</strong> Joaquim Ribeiro</div>
-        <div><strong>Idade:</strong> 13 anos</div>
-        <div><strong>Data de Nascimento:</strong> 18/09/2012</div>
-        <div><strong>Local De Nascimento:</strong> Amadora, Portugal</div>
-        <div><strong>Áreas de atuação:</strong> Dono Do Server, Responsável Por: Tradução, dublagem, locução e adaptação linguística</div>
+        <h3 style="color:#60a5fa;">Status</h3>
+        <p><strong>Marca avaliada pela Space Community:</strong> Sim</p>
+        <p><strong>Status do projeto PT:</strong> Não verificado oficialmente</p>
 
         <hr style="margin: 10px 0; border-color:#2563eb;">
 
-        <h3 style="color:#60a5fa; margin-bottom:8px;">Status e Supervisão</h3>
-        <div><strong>Marca avaliada pela Space Community:</strong> Sim</div>
-        <div><strong>Status do projeto PT:</strong> Projeto não verificado oficialmente (conforme indicado na secção principal)</div>
-        <div><strong>Empresa que supervisiona a comunidade:</strong> Space Community</div>
-
-        <hr style="margin: 10px 0; border-color:#2563eb;">
-
-        <h3 style="color:#60a5fa; margin-bottom:8px;">Contribuições para a Comunidade PT</h3>
+        <h3 style="color:#60a5fa;">Contribuições</h3>
         <ul>
-          <li>Dublagem completa em Português para menus e partes do servidor</li>
-          <li>Adaptação de textos e descrições</li>
-          <li>Revisão linguística e correções</li>
-          <li>Apoio e moderação da comunidade portuguesa</li>
-          <li>Criação de conteúdos e eventos na língua PT</li>
+          <li>Dublagem e narração em PT</li>
+          <li>Traduções e adaptações culturais</li>
+          <li>Revisões de texto</li>
+          <li>Apoio à comunidade lusófona</li>
+          <li>Criação de eventos PT</li>
         </ul>
 
-        
+      </div>
     </div>
 
-    <!-- RESTANTE DO CONTEÚDO (INALTERADO) -->
+    <!-- INÍCIO -->
     <div id="inicio" class="tab-content active">
       <h2>Bem-vindo ao UniversoCraft</h2>
-      <p>
-        🌠 O UniversoCraft é uma comunidade gigante de Minecraft com <strong>46 minigames incríveis</strong>, eventos exclusivos, ranks e muito mais!
-      </p>
- <div class="server-info">
-  <div class="players" id="playersOnline">--</div>
-  <div>Jogando Agora</div>
+      <p>🌠 O UniversoCraft é uma comunidade gigante de Minecraft com <strong>46 minigames incríveis</strong>!</p>
 
-  <div><strong>Versões Suportadas:</strong> 1.8 até 1.21</div>
-  <div><strong>Idioma Oficial do Servidor:</strong> Espanhol</div>
+      <div class="server-info">
+        <div class="players" id="playersOnline">--</div>
+        <div>Jogando Agora</div>
 
-  <hr style="margin: 10px 0; border-color:#2563eb;">
-
-  
-
-  
-
-</div>
-
+        <div><strong>Versões Suportadas:</strong> 1.8 até 1.21</div>
+        <div><strong>Idioma Oficial:</strong> Espanhol</div>
+      </div>
     </div>
 
+    <!-- SERVIDOR -->
     <div id="servidor" class="tab-content">
       <h2>Modos de Jogo</h2>
       <div class="card">
         <h3>🎮 Mais de 46 minigames</h3>
-        <p>Minigames variados para todos os gostos e níveis.</p>
+        <p>Variedade para todos os níveis.</p>
       </div>
       <div class="card">
         <h3>🌍 Mundo em constante evolução</h3>
-        <p>Explore mapas únicos e participe em eventos exclusivos.</p>
+        <p>Eventos, mapas e desafios únicos.</p>
       </div>
       <div class="card">
-        <h3>💎 Sistema VIP e Boosters</h3>
-        <p>Compre VIPs, boosters e itens exclusivos para melhorar sua experiência.</p>
+        <h3>💎 Sistema VIP</h3>
+        <p>VIPs, boosters e itens exclusivos.</p>
       </div>
     </div>
 
+    <!-- LOJA -->
     <div id="loja" class="tab-content">
       <h2>🛒 Loja Oficial</h2>
-      <div class="card" style="text-align:left; line-height: 1.8;">
-        <p>🎉 <strong>Bem-vindo à Loja do UniversoCraft!</strong> 🪐</p>
-        <p>🛒 Aqui podes comprar <strong>VIPs</strong>, <strong>Boosters</strong>, <strong>Ícones</strong> e <strong>Tags personalizadas</strong> para o teu perfil no servidor.</p>
-
-        <p>🌐 <strong>Acede já:</strong> <a href="https://tienda.universocraft.com" target="_blank" style="color:#60a5fa; text-decoration:underline;">tienda.universocraft.com</a></p>
-
-        <hr style="border-color: #2563eb;" />
-
-        <p>💎 <strong>O que encontras na loja?</strong></p>
-        <ul>
-          <li>🎖️ VIPs <strong>permanentes e temporários</strong></li>
-          <li>🔁 <strong>Upgrade de VIP</strong> pagando apenas a diferença</li>
-          <li>💬 <strong>Cargo exclusivo</strong> no Discord oficial do UniversoCraft</li>
-          <li>⚡ <strong>Boosters</strong> para aumentar experiência e moedas</li>
-          <li>🏷️ <strong>Pacotes de ícones e tags</strong>, com validade temporária</li>
-        </ul>
-
-        <hr style="border-color: #2563eb;" />
-
-        <p>🔒 <strong>Pagamentos 100% seguros via Tebex</strong></p>
-
-        <p>💳 <strong>Métodos principais aceites:</strong><br> PayPal • MBWay • Google Pay</p>
-
-        <p>🌍 <strong>Pagamentos alternativos:</strong><br> Aceitamos praticamente <strong>qualquer método de pagamento do mundo!</strong></p>
-
-        <p>💱 <strong>Conversão automática de moeda:</strong><br> Todos os pagamentos são convertidos para <strong>euros</strong>, com base no valor do <strong>dólar</strong>, de forma <strong>segura e instantânea</strong>.</p>
-
-        <hr style="border-color: #2563eb;" />
-
-        <p>📦 <strong>Entrega automática</strong> após confirmação do pagamento.</p>
-
-        <p>✏️ <strong>Confirma o teu nick Minecraft antes de finalizar a compra!</strong></p>
-
-        <hr style="border-color: #2563eb;" />
-
-        <p>🚀 <strong>UniversoCraft — Diverte-te no maior servidor da galáxia!</strong></p>
+      <div class="card" style="text-align:left;">
+        <p>🎉 <strong>Bem-vindo à Loja do UniversoCraft!</strong></p>
+        <p>🛒 VIPs • Boosters • Ícones • Tags</p>
+        <p>🌐 <a href="https://tienda.universocraft.com" target="_blank" style="color:#60a5fa;">Abrir Loja</a></p>
       </div>
     </div>
 
+    <!-- BUGS -->
     <div id="bugs" class="tab-content">
       <h2>🛠️ Reportar Bugs</h2>
-      <div class="card" style="text-align:left; line-height: 1.8;">
-        <p>🛠️💥 <strong>Achou um bug no UniversoCraft?</strong> 😵‍💫</p>
-
-        <p>Nos avise para que possamos resolver o mais rápido possível!<br>
-        📍 Para isso, <strong>acesse o nosso fórum oficial de bugs</strong>:</p>
-
-        <p>🔗 <a href="https://www.universocraft.com/forums/errores-y-bugs/" target="_blank" style="color:#60a5fa; text-decoration:underline;">Reportar Bug</a></p>
-
-        <hr style="border-color: #2563eb;" />
-
-        <p>📌 <strong>Dicas importantes ao reportar:</strong></p>
-
-        <ul>
-          <li>🧠 Seja <strong>claro e objetivo</strong> na explicação</li>
-          <li>📷 Envie <strong>prints, vídeos ou logs</strong> (se tiver)</li>
-          <li>⏱️ Informe o <strong>momento e local</strong> em que aconteceu</li>
-          <li>💬 Mantenha o respeito e a educação</li>
-        </ul>
-
-        <hr style="border-color: #2563eb;" />
-
-        <p>🎁 <strong>Sua ajuda é essencial para manter o servidor top!</strong><br>💖 Obrigado por fazer parte da nossa comunidade!<br>🚀 Vamos juntos deixar o UniversoCraft cada vez melhor!</p>
+      <div class="card">
+        <p>Achou um bug? Reporta no fórum oficial:</p>
+        <a href="https://www.universocraft.com/forums/errores-y-bugs/" target="_blank" style="color:#60a5fa;">Reportar Bug</a>
       </div>
     </div>
 
+    <!-- DISCORD -->
     <div id="discord" class="tab-content">
       <h2>💬 Comunidade no Discord</h2>
-      <p>Junta-te ao nosso servidor oficial em português criado em Portugal:</p>
-      <p><a href="https://dsc.gg/universocraft-portugues" target="_blank" class="btn">Entrar no Discord UniversoCraft Português</a></p>
+      <p>Entra no servidor em Português:</p>
+      <a href="https://dsc.gg/universocraft-portugues" target="_blank" class="btn">Entrar no Discord</a>
     </div>
 
+    <!-- YOUTUBE -->
     <div id="youtube" class="tab-content">
-      <h2>🎥 Canal Oficial UniversoCraft</h2>
-      <p>Visite o canal oficial da comunidade no YouTube:</p>
-      <p><a href="https://www.youtube.com/channel/UCfNm0fVgsNCaZsGagL9X_aw" target="_blank" class="btn">Canal YouTube UniversoCraft</a></p>
+      <h2>🎥 Canal Oficial</h2>
+      <p>Visita o canal PT:</p>
+      <a href="https://www.youtube.com/channel/UCfNm0fVgsNCaZsGagL9X_aw" target="_blank" class="btn">YouTube</a>
     </div>
 
+    <!-- ESTATÍSTICAS -->
     <div id="estatisticas" class="tab-content">
       <h2>📊 Estatísticas do Jogador</h2>
-      <p>Digite seu nick Minecraft para ver suas estatísticas no UniversoCraft:</p>
-      <input type="text" id="playerNick" placeholder="Digite seu nick Minecraft" />
+      <input type="text" id="playerNick" placeholder="Digite seu nick Minecraft">
       <button onclick="openStats()" class="btn">Ver Estatísticas</button>
     </div>
+
   </div>
 
-  <!-- Botão flutuante IP -->
   <button id="ipCopyBtn" title="Clique para copiar IP">mc.universocraft.com</button>
 
   <footer style="margin-top:30px; user-select:none; color:#9ca3af; text-align:center; font-size:0.9rem;">
-    © 2025 UniversoCraft Português — Site criado em Portugal por fãs.
+    © 2025 UniversoCraft Português — Site criado por fãs.
   </footer>
 
   <script>
-    // Função para mudar abas
     function openTab(evt, tabName) {
-      const tabContents = document.querySelectorAll('.tab-content');
-      tabContents.forEach(content => content.classList.remove('active'));
-
-      const tabButtons = document.querySelectorAll('.tab-buttons button');
-      tabButtons.forEach(btn => btn.classList.remove('active'));
-
+      document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.tab-buttons button').forEach(b => b.classList.remove('active'));
       document.getElementById(tabName).classList.add('active');
       evt.currentTarget.classList.add('active');
-
       window.scrollTo(0, 0);
     }
 
-    // Atualiza número de jogadores online via API mcsrvstat.us a cada 5s
     async function updatePlayersOnline() {
       try {
         const response = await fetch("https://api.mcsrvstat.us/2/mc.universocraft.com");
         const data = await response.json();
         const playersElem = document.getElementById("playersOnline");
-        if (data.online && data.players && typeof data.players.online === 'number') {
-          playersElem.textContent = `${data.players.online} / ${data.players.max}`;
+
+        if (data.online === true) {
+          const online = data.players?.online ?? 0;
+          const max = data.players?.max ?? 0;
+          playersElem.textContent = `${online} / ${max}`;
         } else {
           playersElem.textContent = "Offline";
         }
-      } catch {
+
+      } catch (e) {
         document.getElementById("playersOnline").textContent = "Erro";
       }
     }
     updatePlayersOnline();
     setInterval(updatePlayersOnline, 5000);
 
-    // Copiar IP ao clicar no botão flutuante
-    const ipBtn = document.getElementById('ipCopyBtn');
-    ipBtn.addEventListener('click', () => {
-      navigator.clipboard.writeText('mc.universocraft.com').then(() => {
-        alert('IP mc.universocraft.com copiado para a área de transferência!');
-      }).catch(() => {
-        alert('Não foi possível copiar o IP, tente manualmente.');
-      });
+    document.getElementById('ipCopyBtn').addEventListener('click', () => {
+      navigator.clipboard.writeText('mc.universocraft.com')
+        .then(() => alert('IP copiado!'))
+        .catch(() => alert('Erro ao copiar o IP'));
     });
 
-    // Abre a página de estatísticas numa nova aba
     function openStats() {
       const nick = document.getElementById('playerNick').value.trim();
-      if (!nick) {
-        alert('Por favor, insira seu nick Minecraft.');
-        return;
-      }
-      const url = `https://stats.universocraft.com/jugador/${encodeURIComponent(nick)}`;
-      window.open(url, '_blank');
+      if (!nick) return alert("Digite seu nick.");
+      window.open(`https://stats.universocraft.com/jugador/${encodeURIComponent(nick)}`, "_blank");
     }
   </script>
 

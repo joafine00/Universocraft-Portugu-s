@@ -295,11 +295,11 @@
   updatePlayers();
   setInterval(updatePlayers, 5000);
 
-  document.getElementById('ipCopyBtn').onclick = () => {
-    navigator.clipboard.writeText('mc.universocraft.com').then(() =>
-      alert('IP copiado para a área de transferência!')
-    );
-  };
+document.getElementById('ipCopyBtn').onclick = () => {
+  navigator.clipboard.writeText('mc.universocraft.com').then(() =>
+    alert('IP copiado para a área de transferência!')
+  );
+};
 
   function openStats() {
     const nick = document.getElementById('playerNick').value.trim();
